@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.base.dao.MajorMapper">
+	<resultMap id="BaseResultMap" type="Major">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="CODE" property="code" jdbcType="CHAR" />
+		<result column="NAME" property="name" jdbcType="CHAR" />
+		<result column="MAJOR_TYPE_ID" property="majorTypeId" jdbcType="DECIMAL" />
+		<result column="STATUS" property="status" jdbcType="DECIMAL" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID,
+		CODE,
+		NAME,
+		MAJOR_TYPE_ID,
+		STATUS
+	</sql>
+	
+	<select id="select" resultMap="BaseResultMap" parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from BA_MAJOR
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<select id="selectByArray" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from BA_MAJOR
+		<where>
+			<if test="array != null and array.length &gt; 0 ">
+				ID in <foreach collection="array" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from BA_MAJOR
+		<where>
+			<if test="list != null and list.size &gt; 0 ">
+				ID in <foreach collection="list" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<delete id="delete" parameterType="long">
+		delete from BA_MAJOR
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="Major">
+		insert into BA_MAJOR (
+			<include refid="Base_Column_List" />
+		) values (
+			#{id,jdbcType=DECIMAL},
+			#{code,jdbcType=CHAR},
+			#{name,jdbcType=CHAR},
+			#{majorTypeId,jdbcType=DECIMAL},
+			#{status,jdbcType=DECIMAL})
+	</insert>
+	<insert id="insertSelective" parameterType="Major">
+		<selectKey keyProperty="id" order="BEFORE" resultType="long">
+			select SEQ_MAJOR_ID.nextval from dual
+		</selectKey>
+		insert into BA_MAJOR
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="code != null">
+				CODE,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="majorTypeId != null">
+				MAJOR_TYPE_ID,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=CHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=CHAR},
+			</if>
+			<if test="majorTypeId != null">
+				#{majorTypeId,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=DECIMAL},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateSelective" parameterType="Major">
+		update BA_MAJOR
+		<set>
+			<if test="code != null">
+				CODE = #{code,jdbcType=CHAR},
+			</if>
+			<if test="name != null">
+				NAME = #{name,jdbcType=CHAR},
+			</if>
+			<if test="majorTypeId != null">
+				MAJOR_TYPE_ID = #{majorTypeId,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="update" parameterType="Major">
+		update BA_MAJOR
+		set
+			CODE = #{code,jdbcType=CHAR},
+			NAME = #{name,jdbcType=CHAR},
+			MAJOR_TYPE_ID = #{majorTypeId,jdbcType=DECIMAL},
+			STATUS = #{status,jdbcType=DECIMAL}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+</mapper>

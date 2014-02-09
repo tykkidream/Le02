@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.school.dao.ClassesMapper">
+	<resultMap id="BaseResultMap" type="Classes">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="CODE" property="code" jdbcType="CHAR" />
+		<result column="NAME" property="name" jdbcType="CHAR" />
+		<result column="TEACHER_ID" property="teacherId" jdbcType="DECIMAL" />
+		<result column="MONITOR_ID" property="monitorId" jdbcType="DECIMAL" />
+		<result column="GRADE_ID" property="gradeId" jdbcType="DECIMAL" />
+		<result column="MAJOR_ID" property="majorId" jdbcType="DECIMAL" />
+		<result column="SCHOOL_ID" property="schoolId" jdbcType="DECIMAL" />
+		<result column="FOUNDING_DATE" property="foundingDate" jdbcType="TIMESTAMP" />
+		<result column="FOUNDING_SEQUENCE" property="foundingSequence" jdbcType="DECIMAL" />
+		<result column="STUDENT_NUM" property="studentNum" jdbcType="DECIMAL" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID,
+		CODE,
+		NAME,
+		TEACHER_ID,
+		MONITOR_ID,
+		GRADE_ID,
+		MAJOR_ID,
+		SCHOOL_ID,
+		FOUNDING_DATE,
+		FOUNDING_SEQUENCE,
+		STUDENT_NUM
+	</sql>
+	
+	<select id="select" resultMap="BaseResultMap" parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from SC_CLASSES
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<delete id="delete" parameterType="long">
+		delete from SC_CLASSES
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="Classes">
+		insert into SC_CLASSES (
+			<include refid="Base_Column_List" />
+		) values (
+			#{id,jdbcType=DECIMAL},
+			#{code,jdbcType=CHAR},
+			#{name,jdbcType=CHAR},
+			#{teacherId,jdbcType=DECIMAL},
+			#{monitorId,jdbcType=DECIMAL},
+			#{gradeId,jdbcType=DECIMAL},
+			#{majorId,jdbcType=DECIMAL},
+			#{schoolId,jdbcType=DECIMAL},
+			#{foundingDate,jdbcType=TIMESTAMP},
+			#{foundingSequence,jdbcType=DECIMAL},
+			#{studentNum,jdbcType=DECIMAL})
+	</insert>
+	<insert id="insertSelective" parameterType="Classes">
+		<selectKey keyProperty="id" order="BEFORE" resultType="long">
+			select SEQ_CLASSES_ID.nextval from dual
+		</selectKey>
+		insert into SC_CLASSES
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="code != null">
+				CODE,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="teacherId != null">
+				TEACHER_ID,
+			</if>
+			<if test="monitorId != null">
+				MONITOR_ID,
+			</if>
+			<if test="gradeId != null">
+				GRADE_ID,
+			</if>
+			<if test="majorId != null">
+				MAJOR_ID,
+			</if>
+			<if test="schoolId != null">
+				SCHOOL_ID,
+			</if>
+			<if test="foundingDate != null">
+				FOUNDING_DATE,
+			</if>
+			<if test="foundingSequence != null">
+				FOUNDING_SEQUENCE,
+			</if>
+			<if test="studentNum != null">
+				STUDENT_NUM,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=CHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=CHAR},
+			</if>
+			<if test="teacherId != null">
+				#{teacherId,jdbcType=DECIMAL},
+			</if>
+			<if test="monitorId != null">
+				#{monitorId,jdbcType=DECIMAL},
+			</if>
+			<if test="gradeId != null">
+				#{gradeId,jdbcType=DECIMAL},
+			</if>
+			<if test="majorId != null">
+				#{majorId,jdbcType=DECIMAL},
+			</if>
+			<if test="schoolId != null">
+				#{schoolId,jdbcType=DECIMAL},
+			</if>
+			<if test="foundingDate != null">
+				#{foundingDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="foundingSequence != null">
+				#{foundingSequence,jdbcType=DECIMAL},
+			</if>
+			<if test="studentNum != null">
+				#{studentNum,jdbcType=DECIMAL},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateSelective" parameterType="Classes">
+		update SC_CLASSES
+		<set>
+			<if test="code != null">
+				CODE = #{code,jdbcType=CHAR},
+			</if>
+			<if test="name != null">
+				NAME = #{name,jdbcType=CHAR},
+			</if>
+			<if test="teacherId != null">
+				TEACHER_ID = #{teacherId,jdbcType=DECIMAL},
+			</if>
+			<if test="monitorId != null">
+				MONITOR_ID = #{monitorId,jdbcType=DECIMAL},
+			</if>
+			<if test="gradeId != null">
+				GRADE_ID = #{gradeId,jdbcType=DECIMAL},
+			</if>
+			<if test="majorId != null">
+				MAJOR_ID = #{majorId,jdbcType=DECIMAL},
+			</if>
+			<if test="schoolId != null">
+				SCHOOL_ID = #{schoolId,jdbcType=DECIMAL},
+			</if>
+			<if test="foundingDate != null">
+				FOUNDING_DATE = #{foundingDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="foundingSequence != null">
+				FOUNDING_SEQUENCE = #{foundingSequence,jdbcType=DECIMAL},
+			</if>
+			<if test="studentNum != null">
+				STUDENT_NUM = #{studentNum,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="update" parameterType="Classes">
+		update SC_CLASSES
+		set
+			CODE = #{code,jdbcType=CHAR},
+			NAME = #{name,jdbcType=CHAR},
+			TEACHER_ID = #{teacherId,jdbcType=DECIMAL},
+			MONITOR_ID = #{monitorId,jdbcType=DECIMAL},
+			GRADE_ID = #{gradeId,jdbcType=DECIMAL},
+			MAJOR_ID = #{majorId,jdbcType=DECIMAL},
+			SCHOOL_ID = #{schoolId,jdbcType=DECIMAL},
+			FOUNDING_DATE = #{foundingDate,jdbcType=TIMESTAMP},
+			FOUNDING_SEQUENCE = #{foundingSequence,jdbcType=DECIMAL},
+			STUDENT_NUM = #{studentNum,jdbcType=DECIMAL}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+</mapper>

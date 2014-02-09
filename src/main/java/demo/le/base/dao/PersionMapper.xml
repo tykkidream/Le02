@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.base.dao.PersionMapper">
+	<resultMap id="BaseResultMap" type="Persion">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="FIRST_NAME" property="firstName" jdbcType="CHAR" />
+		<result column="LAST_NAME" property="lastName" jdbcType="CHAR" />
+		<result column="SEX" property="sex" jdbcType="CHAR" />
+		<result column="TELEPHONE" property="telephone" jdbcType="CHAR" />
+		<result column="BIRTH_DATE" property="birthDate" jdbcType="TIMESTAMP" />
+		<result column="HOMETOWN" property="hometown" jdbcType="VARCHAR" />
+		<result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+		<result column="HAT_PHOTO" property="hatPhoto" jdbcType="VARCHAR" />
+		<result column="CODE" property="code" jdbcType="CHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID,
+		FIRST_NAME,
+		LAST_NAME,
+		SEX,
+		TELEPHONE,
+		BIRTH_DATE,
+		HOMETOWN,
+		ADDRESS,
+		HAT_PHOTO,
+		CODE
+	</sql>
+	
+	<select id="select" resultMap="BaseResultMap" parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from BA_PERSION
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<select id="selectByArray" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from BA_PERSION
+		<where>
+			<if test="array != null and array.length &gt; 0 ">
+				ID in <foreach collection="array" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from BA_PERSION
+		<where>
+			<if test="list != null and list.size &gt; 0 ">
+				ID in <foreach collection="list" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<delete id="delete" parameterType="long">
+		delete from BA_PERSION
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="Persion">
+		insert into BA_PERSION (
+			<include refid="Base_Column_List" />
+		) values (
+			#{id,jdbcType=DECIMAL},
+			#{firstName,jdbcType=CHAR},
+			#{lastName,jdbcType=CHAR},
+			#{sex,jdbcType=CHAR},
+			#{telephone,jdbcType=CHAR},
+			#{birthDate,jdbcType=TIMESTAMP},
+			#{hometown,jdbcType=VARCHAR},
+			#{address,jdbcType=VARCHAR},
+			#{hatPhoto,jdbcType=VARCHAR},
+			#{code,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="Persion">
+		<selectKey keyProperty="id" order="BEFORE" resultType="long">
+			select SEQ_PERSION_ID.nextval from dual
+		</selectKey>
+		insert into BA_PERSION
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+				ID,
+			<if test="firstName != null">
+				FIRST_NAME,
+			</if>
+			<if test="lastName != null">
+				LAST_NAME,
+			</if>
+			<if test="sex != null">
+				SEX,
+			</if>
+			<if test="telephone != null">
+				TELEPHONE,
+			</if>
+			<if test="birthDate != null">
+				BIRTH_DATE,
+			</if>
+			<if test="hometown != null">
+				HOMETOWN,
+			</if>
+			<if test="address != null">
+				ADDRESS,
+			</if>
+			<if test="hatPhoto != null">
+				HAT_PHOTO,
+			</if>
+			<if test="code != null">
+				CODE
+			</if>
+		</trim>
+		<trim prefix=" values (" suffix=")" suffixOverrides=",">
+				#{id,jdbcType=DECIMAL},
+			<if test="firstName != null">
+				#{firstName,jdbcType=CHAR},
+			</if>
+			<if test="lastName != null">
+				#{lastName,jdbcType=CHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=CHAR},
+			</if>
+			<if test="telephone != null">
+				#{telephone,jdbcType=CHAR},
+			</if>
+			<if test="birthDate != null">
+				#{birthDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="hometown != null">
+				#{hometown,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="hatPhoto != null">
+				#{hatPhoto,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=CHAR}
+			</if>
+		</trim>
+	</insert>
+	<update id="updateSelective" parameterType="Persion">
+		update BA_PERSION
+		<set>
+			<if test="firstName != null">
+				FIRST_NAME = #{firstName,jdbcType=CHAR},
+			</if>
+			<if test="lastName != null">
+				LAST_NAME = #{lastName,jdbcType=CHAR},
+			</if>
+			<if test="sex != null">
+				SEX = #{sex,jdbcType=CHAR},
+			</if>
+			<if test="telephone != null">
+				TELEPHONE = #{telephone,jdbcType=CHAR},
+			</if>
+			<if test="birthDate != null">
+				BIRTH_DATE = #{birthDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="hometown != null">
+				HOMETOWN = #{hometown,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				ADDRESS = #{address,jdbcType=VARCHAR},
+			</if>			
+			<if test="hatPhoto != null">
+				HAT_PHOTO = #{hatPhoto,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null">
+				CODE = #{code,jdbcType=CHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="update" parameterType="Persion">
+		update BA_PERSION
+		set
+			FIRST_NAME = #{firstName,jdbcType=CHAR},
+			LAST_NAME = #{lastName,jdbcType=CHAR},
+			SEX = #{sex,jdbcType=CHAR},
+			TELEPHONE = #{telephone,jdbcType=CHAR},
+			BIRTH_DATE = #{birthDate,jdbcType=TIMESTAMP},
+			HOMETOWN = #{hometown,jdbcType=VARCHAR},
+			ADDRESS = #{address,jdbcType=VARCHAR},
+			HAT_PHOTO = #{hatPhoto,jdbcType=VARCHAR},
+			CODE = #{code,jdbcType=CHAR}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+</mapper>

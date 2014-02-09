@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.school.dao.SchoolMapper">
+	<resultMap id="BaseResultMap" type="School">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="NAME" property="name" jdbcType="CHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID,
+		NAME
+	</sql>
+	
+	<select id="select" resultMap="BaseResultMap" parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from SC_SCHOOL
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<delete id="delete" parameterType="long">
+		delete from SC_SCHOOL
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="School">
+		insert into SC_SCHOOL (
+			<include refid="Base_Column_List" />
+		) values (
+			#{id,jdbcType=DECIMAL},
+			#{name,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="School">
+		<selectKey keyProperty="id" order="BEFORE" resultType="long">
+			select SEQ_SCHOOL_ID.nextval from dual
+		</selectKey>
+		insert into SC_SCHOOL
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateSelective" parameterType="School">
+		update SC_SCHOOL
+		<set>
+			<if test="name != null">
+				NAME = #{name,jdbcType=CHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="update" parameterType="School">
+		update SC_SCHOOL
+		set
+			NAME = #{name,jdbcType=CHAR}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+</mapper>
