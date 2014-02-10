@@ -17,7 +17,6 @@ public class HomeController {
 
 	@RequestMapping({"/","/home"})
 	public String showHome(Map<String,Object> model){
-		
 		return "home";
 	}
 }

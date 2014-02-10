@@ -9,20 +9,18 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-	<context:component-scan base-package="demo.le.main.mvc"></context:component-scan>
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<mvc:annotation-driven />
+	<context:component-scan base-package="demo.le.main.mvc" />
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/WEB-INF/views/*" />
+		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
-	</bean>
-	
-	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
-	</bean>
-	
+	</bean> -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
-				<value>/WEB-INF/views/**/tiles.xml</value>
+				<value>/WEB-INF/views/**/views.xml</value>
 			</list>
 		</property>
 	</bean>
