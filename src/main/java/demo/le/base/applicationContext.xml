@@ -35,8 +35,5 @@
 	<bean id="DegreeServiceImpl" class="demo.le.base.service.impl.DegreeServiceImpl">
 		<property name="BaseDao" ref="DegreeMapper" />
 	</bean>
-	
-	<bean id="DegreeAction" class="demo.le.base.action.DegreeAction">
-		<property name="BaseService" ref="DegreeServiceImpl" />
-	</bean>
+
 </beans>
