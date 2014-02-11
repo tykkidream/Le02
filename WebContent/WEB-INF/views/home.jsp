@@ -7,6 +7,6 @@
 <div>
 	<h1>HOME</h1>
 	<ul>
-		<li><a href="degree/">学位管理</a></li>
+		<li><a href="degrees/">学位管理</a></li>
 	</ul>
 </div>

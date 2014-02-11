@@ -1,5 +1,7 @@
 package demo.le.base.model;
 
+import javax.validation.constraints.Size;
+
 import dream.keel.base.BaseModel;
 
 /**
@@ -14,6 +16,7 @@ public class Degree implements BaseModel<Degree> {
 
     private String code;
 
+    @Size(min = 6, max = 20, message="名称长度必须至少6位，最多20位。")
     private String name;
     
     public Degree(){}

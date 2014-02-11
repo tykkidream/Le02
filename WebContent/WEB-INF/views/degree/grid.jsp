@@ -5,8 +5,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
-	<h3><a href="../">首页</a>&nbsp;&nbsp;<a href=".">学位管理</a>&nbsp;&nbsp;浏览所有的学位</h3>
-	<table border="'1" width='100%"' >
+	<h3><a href="../">首页</a>&nbsp;&nbsp;<a href="./">学位管理</a>&nbsp;&nbsp;浏览所有的学位</h3>
+	<table border="1" width="100%">
 		<tr>
 			<th>ID</th>
 			<th>Code</th>
@@ -19,7 +19,7 @@
 			<td><c:out value="${item.id }" /></td>
 			<td><c:out value="${item.code }" /></td>
 			<td><c:out value="${item.name }" /></td>
-			<td><s:url var="manage_view" value="/degree/detail?id=${item.id }" /><a href="${manage_view }">查看</a></td>
+			<td><s:url var="manage_view" value="/degrees/detail?id=${item.id }" /><a href="${manage_view }">查看</a></td>
 		</tr>
 		</c:forEach>
 		</tbody>

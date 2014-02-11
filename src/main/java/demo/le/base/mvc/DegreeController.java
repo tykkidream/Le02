@@ -3,9 +3,11 @@ package demo.le.base.mvc;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +17,7 @@ import demo.le.base.service.DegreeService;
 import dream.keel.base.Page;
 
 @Controller
-@RequestMapping("/degree")
+@RequestMapping("/degrees")
 public class DegreeController {
 	
 	private DegreeService degreeService = null;
@@ -33,34 +35,44 @@ public class DegreeController {
 		this.setDegreeService(degreeService);
 	}
 	
-	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"", "/", "/home"},method = RequestMethod.GET)
 	public String showHome(Map<String,Object> model){
-		return "degreeHome";
+		return "degree/home";
 	}
 
 	@RequestMapping(value = "/grid", method = RequestMethod.GET)
 	public String showGrid(@RequestParam(value = "page", required=false) Page<Degree> page, Model model){
 		page = this.getDegreeService().queryByPage(page);
 		model.addAttribute(page);
-		return "degreeGrid";
+		return "degree/grid";
 	}
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String showDetail(@RequestParam("id") Long id, Model model){
 		Degree degree = this.getDegreeService().query(id);
 		model.addAttribute(degree);
-		return "degreeDetail";
-	}
-
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
-	public String showNew(@RequestParam(value = "page", required=false) Degree degree, Model model){
-		return "degreeEdit";
+		return "degree/detail";
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public String showEdit(@RequestParam("id") Long id, Model model){
-		Degree degree = this.getDegreeService().query(id);
+	public String showEdit(@RequestParam(value = "id", required=false) Long id, Model model){
+		Degree degree = null;
+		if(null != id) {
+			degree = this.getDegreeService().query(id);
+		} else {
+			degree = new Degree();
+		}
 		model.addAttribute(degree);
-		return "degreeEdit";
+		return "degree/edit";
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String actionSave(@Valid Degree degree, BindingResult bindingResult ) {
+		if (bindingResult.hasErrors()) {
+			return "degree/edit";
+		}
+		
+		this.getDegreeService().saveOne(degree);
+		return "redirect:/degree/" + degree.getId();
 	}
 }

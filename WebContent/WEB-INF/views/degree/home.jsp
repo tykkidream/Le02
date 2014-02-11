@@ -7,6 +7,6 @@
 <div>
 	<ul>
 		<li><a href="grid">浏览所有的学位</a></li>
-		<li><a href="new">创建一个新学位</a></li>
+		<li><a href="edit">创建一个新学位</a></li>
 	</ul>
 </div>
