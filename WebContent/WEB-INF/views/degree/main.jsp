@@ -5,8 +5,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
-	<h1>HOME</h1>
-	<ul>
-		<li><a href="degree/">学位管理</a></li>
-	</ul>
+	<h1>学位管理</h1>
+	<div>
+		<t:insertAttribute name="degreeBody" />
+	</div>
 </div>
