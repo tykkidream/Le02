@@ -19,18 +19,21 @@
 		<tbody>
 		<c:forEach var="item" items="${page.result }">
 		<tr>
-			<td><c:out value="${item.id }" /></td>
-			<td><c:out value="${item.code }" /></td>
-			<td><c:out value="${item.name }" /></td>
-			<td><c:out value="${item.sex }" /></td>
-			<td><c:out value="${item.telephone }" /></td>
-			<td><c:out value="${item.birthDate }" /></td>
-			<td><s:url var="manage_view" value="/persion/${item.id }" /><a href="${manage_view }">查看</a></td>
+			<td><c:out value="${item.id }" />&nbsp;</td>
+			<td><c:out value="${item.code }" />&nbsp;</td>
+			<td><c:out value="${item.name }" />&nbsp;</td>
+			<td><c:out value="${item.sex }" />&nbsp;</td>
+			<td><c:out value="${item.telephone }" />&nbsp;</td>
+			<td><c:out value="${item.birthDate }" />&nbsp;</td>
+			<td>
+				<s:url var="manage_view" value="/persion/${item.id }" /><a href="${manage_view }">查看</a>
+				<s:url var="manage_view" value="/persion/edit?id=${item.id }" /><a href="${manage_view }">修改</a>
+			</td>
 		</tr>
 		</c:forEach>
 		</tbody>
 		<tr>
-			<td colspan="4">&nbsp;</td>
+			<td colspan="7">&nbsp;</td>
 		</tr>
 	</table>
 </div>

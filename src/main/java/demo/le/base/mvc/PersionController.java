@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import demo.le.base.model.Persion;
 import demo.le.base.service.PersionService;
@@ -48,4 +49,9 @@ public class PersionController extends BaseController<Persion> {
 		}
 	}
 
+	@Override
+	protected String generateFileName(MultipartFile file, Persion t) {
+		t.setHatPhoto(super.generateFileName(file, null)+".jpg");
+		return t.getHatPhoto();
+	}
 }

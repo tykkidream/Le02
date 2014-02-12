@@ -41,7 +41,7 @@
 		</tr>
 		<tr>
 			<td>免冠照</td>
-			<td>&nbsp;</td>
+			<td><c:if test="${model.hatPhoto != null }"><img src="/Le02/${model.hatPhoto }" /></c:if>&nbsp;</td>
 		</tr>
 		<tr>
 			<td colspan="2"><a href="grid">返回</a></td>
