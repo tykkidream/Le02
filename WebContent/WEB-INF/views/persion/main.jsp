@@ -5,9 +5,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
-	<h1>HOME</h1>
-	<ul>
-		<li><a href="degrees/">学位管理</a></li>
-		<li><a href="persion/">人员管理</a></li>
-	</ul>
+	<h1>人员管理</h1>
+	<div>
+		<t:insertAttribute name="persionBody" />
+	</div>
 </div>

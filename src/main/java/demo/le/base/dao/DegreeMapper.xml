@@ -91,6 +91,13 @@
 			</if>
 		</trim>
 	</insert>
+	<update id="update" parameterType="Degree">
+		update BA_DEGREE
+		set
+			CODE = #{code,jdbcType=CHAR},
+			NAME = #{name,jdbcType=CHAR}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
 	<update id="updateSelective" parameterType="Degree">
 		update BA_DEGREE
 		<set>
@@ -103,11 +110,5 @@
 		</set>
 		where ID = #{id,jdbcType=DECIMAL}
 	</update>
-	<update id="update" parameterType="Degree">
-		update BA_DEGREE
-		set
-			CODE = #{code,jdbcType=CHAR},
-			NAME = #{name,jdbcType=CHAR}
-		where ID = #{id,jdbcType=DECIMAL}
-	</update>
+	
 </mapper>

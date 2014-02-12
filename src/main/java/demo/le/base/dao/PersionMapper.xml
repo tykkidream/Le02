@@ -57,6 +57,14 @@
 			</if>
 		</where>
 	</select>
+	<select id="selectByParameters" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from BA_PERSION
+		<where>
+		
+		</where>
+	</select>
 	<delete id="delete" parameterType="long">
 		delete from BA_PERSION
 		where ID = #{id,jdbcType=DECIMAL}
@@ -142,6 +150,20 @@
 			</if>
 		</trim>
 	</insert>
+	<update id="update" parameterType="Persion">
+		update BA_PERSION
+		set
+			FIRST_NAME = #{firstName,jdbcType=CHAR},
+			LAST_NAME = #{lastName,jdbcType=CHAR},
+			SEX = #{sex,jdbcType=CHAR},
+			TELEPHONE = #{telephone,jdbcType=CHAR},
+			BIRTH_DATE = #{birthDate,jdbcType=TIMESTAMP},
+			HOMETOWN = #{hometown,jdbcType=VARCHAR},
+			ADDRESS = #{address,jdbcType=VARCHAR},
+			HAT_PHOTO = #{hatPhoto,jdbcType=VARCHAR},
+			CODE = #{code,jdbcType=CHAR}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
 	<update id="updateSelective" parameterType="Persion">
 		update BA_PERSION
 		<set>
@@ -175,18 +197,5 @@
 		</set>
 		where ID = #{id,jdbcType=DECIMAL}
 	</update>
-	<update id="update" parameterType="Persion">
-		update BA_PERSION
-		set
-			FIRST_NAME = #{firstName,jdbcType=CHAR},
-			LAST_NAME = #{lastName,jdbcType=CHAR},
-			SEX = #{sex,jdbcType=CHAR},
-			TELEPHONE = #{telephone,jdbcType=CHAR},
-			BIRTH_DATE = #{birthDate,jdbcType=TIMESTAMP},
-			HOMETOWN = #{hometown,jdbcType=VARCHAR},
-			ADDRESS = #{address,jdbcType=VARCHAR},
-			HAT_PHOTO = #{hatPhoto,jdbcType=VARCHAR},
-			CODE = #{code,jdbcType=CHAR}
-		where ID = #{id,jdbcType=DECIMAL}
-	</update>
+	
 </mapper>

@@ -35,5 +35,9 @@
 	<bean id="DegreeServiceImpl" class="demo.le.base.service.impl.DegreeServiceImpl">
 		<property name="BaseDao" ref="DegreeMapper" />
 	</bean>
+	
+	<bean id="PersionServiceImpl" class="demo.le.base.service.impl.PersionServiceImpl">
+		<property name="BaseDao" ref="PersionMapper" />
+	</bean>
 
 </beans>

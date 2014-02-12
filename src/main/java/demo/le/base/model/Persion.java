@@ -2,6 +2,8 @@ package demo.le.base.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import dream.keel.base.BaseModel;
 
 /**
@@ -21,6 +23,7 @@ public class Persion implements BaseModel<Persion>{
 
     private String telephone;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date birthDate;
 
     private String hometown;
@@ -56,6 +59,9 @@ public class Persion implements BaseModel<Persion>{
      * @param firstName
      */
     public void setFirstName(String firstName) {
+    	if (null != firstName) {
+    		firstName = firstName.trim();
+		}
         this.firstName = firstName;
     }
 
@@ -72,6 +78,9 @@ public class Persion implements BaseModel<Persion>{
      * @param sex
      */
     public void setSex(String sex) {
+    	if (null != sex) {
+    		sex = sex.trim();
+		}
         this.sex = sex;
     }
 
@@ -88,6 +97,9 @@ public class Persion implements BaseModel<Persion>{
      * @param telephone
      */
     public void setTelephone(String telephone) {
+    	if (null != telephone) {
+    		telephone = telephone.trim();
+		}
         this.telephone = telephone;
     }
 
@@ -168,6 +180,9 @@ public class Persion implements BaseModel<Persion>{
      * @param code
      */
     public void setCode(String code) {
+    	if (null != code) {
+    		code = code.trim();
+		}
         this.code = code;
     }
 
@@ -184,6 +199,9 @@ public class Persion implements BaseModel<Persion>{
      * @param lastName
      */
     public void setLastName(String lastName) {
+    	if (null != lastName) {
+    		lastName = lastName.trim();
+		}
         this.lastName = lastName;
     }
 

@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,6 +55,13 @@ public class DegreeController {
 		return "degree/detail";
 	}
 	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public String showDetail2(@PathVariable Long id, Model model){
+		Degree degree = this.getDegreeService().query(id);
+		model.addAttribute(degree);
+		return "degree/detail";
+	}
+	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public String showEdit(@RequestParam(value = "id", required=false) Long id, Model model){
 		Degree degree = null;
@@ -72,7 +80,7 @@ public class DegreeController {
 			return "degree/edit";
 		}
 		
-		this.getDegreeService().saveOne(degree);
-		return "redirect:/degree/" + degree.getId();
+		this.getDegreeService().saveOneSelective(degree);
+		return "redirect:/degrees/" + degree.getId();
 	}
 }

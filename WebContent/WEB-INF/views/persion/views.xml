@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="persion/main" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/persion/main.jsp" />
+	</definition>
+	<definition name="persion/home" extends="persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/persion/home.jsp" cascade="true"/>
+	</definition>
+	<definition name="persion/detail" extends="persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/persion/detail.jsp" cascade="true"/>
+	</definition>
+	<definition name="persion/edit" extends="persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/persion/edit.jsp" cascade="true"/>
+	</definition>
+	<definition name="persion/grid" extends="persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/persion/grid.jsp" cascade="true"/>
+	</definition>
+</tiles-definitions>

@@ -5,9 +5,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
-	<h1>HOME</h1>
 	<ul>
-		<li><a href="degrees/">学位管理</a></li>
-		<li><a href="persion/">人员管理</a></li>
+		<li><a href="grid">浏览所有的人员</a></li>
+		<li><a href="edit">创建一个新人员</a></li>
 	</ul>
 </div>
