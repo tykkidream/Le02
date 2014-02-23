@@ -14,9 +14,14 @@
 
 	<mvc:resources mapping="/Resources/**" location="/Resources/" />
 
-	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" 
-		/> <property name="prefix" value="/WEB-INF/views/" /> <property name="suffix" value=".jsp" /> </bean> -->
-	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
+	<!-- 普通的文件（模版、JSP之类）解析器。允许配置支持JSTL。 -->
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+	<!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+	<!-- <property name="prefix" value="/WEB-INF/views/" /> -->
+	<!-- <property name="suffix" value=".jsp" /> -->
+	<!-- </bean> -->
+
+	<!-- <bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" /> -->
 
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
@@ -29,4 +34,50 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		p:maxUploadSize="500000" />
 
+	<!-- 根据客户端的不同的请求决定不同的view进行响应, 如 /user/getUser.json /user/getUser.xml -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<!-- 设置为true以忽略对Accept Header的支持 -->
+		<property name="ignoreAcceptHeader" value="true" />
+		<!-- 在没有扩展名时即: "/user/getUser" 时的默认展现形式 -->
+		<property name="defaultContentType" value="text/html" />
+		<!-- 扩展名至mimeType的映射,即 /getUser.json => application/json -->
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
+			</map>
+		</property>
+		<!-- 用于开启 /user/getUser?format=json 的支持 -->
+		<property name="favorParameter" value="false" />
+		<property name="viewResolvers">
+			<list>
+				<!-- <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" /> -->
+				<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+				<!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+				<!-- <property name="prefix" value="/WEB-INF/views/" /> -->
+				<!-- <property name="suffix" value=".jsp"></property> -->
+				<!-- </bean> -->
+				<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<!-- for application/json -->
+				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+				<!-- for application/xml -->
+				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+					<property name="marshaller">
+						<!-- xstream.XStreamMarshaller -->
+						<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+							<property name="packagesToScan">
+								<list>
+									<value>demo.le.*.model</value>
+								</list>
+							</property>
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
 </beans>

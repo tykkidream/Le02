@@ -33,11 +33,11 @@
 	</bean>
 	
 	<bean id="DegreeServiceImpl" class="demo.le.base.service.impl.DegreeServiceImpl">
-		<property name="BaseDao" ref="DegreeMapper" />
+		<property name="baseDao" ref="DegreeMapper" />
 	</bean>
 	
 	<bean id="PersionServiceImpl" class="demo.le.base.service.impl.PersionServiceImpl">
-		<property name="BaseDao" ref="PersionMapper" />
+		<property name="baseDao" ref="PersionMapper" />
 	</bean>
 
 </beans>

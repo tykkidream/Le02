@@ -9,6 +9,10 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
+	<import resource="applicationContext-cache.xml"/>
+	<import resource="applicationContext-mybatis.xml"/>
+	<import resource="applicationContext-springmvc.xml"/>
+	
 	<import resource="demo/le/base/applicationContext.xml"/>
 	<import resource="demo/le/school/applicationContext.xml"/>
 	

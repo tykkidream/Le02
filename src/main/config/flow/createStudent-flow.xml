@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+	start-state="start">
+
+	<view-state id="start">
+		<transition to="persion"></transition>
+	</view-state>
+
+	<view-state id="persion">
+		<transition to="student"></transition>
+	</view-state>
+	<view-state id="student">
+		<transition to="success"></transition>
+	</view-state>
+	<view-state id="success">
+		<transition to="end"></transition>
+	</view-state>
+	<end-state id="end"></end-state>
+</flow>

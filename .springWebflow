@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webflow-project-description>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.4.0.201310051539-RELEASE]]></pluginVersion>
+	<configs>
+		<config>
+			<file>src/main/config/flow/createStudent-flow.xml</file>
+			<name><![CDATA[createStudent-flow]]></name>
+		</config>
+		<config>
+			<file>src/main/config/flow/createStudent-flow.xml</file>
+			<name><![CDATA[createStudent-flow]]></name>
+		</config>
+		<config>
+			<file>src/main/config/flow/createStudent-flow.xml</file>
+			<name><![CDATA[createStudent-flow]]></name>
+		</config>
+		<config>
+			<file>src/main/config/flow/createStudent-flow.xml</file>
+			<name><![CDATA[createStudent-flow]]></name>
+		</config>
+		<config>
+			<file>src/main/config/flow/createStudent-flow.xml</file>
+			<name><![CDATA[createStudent-flow]]></name>
+		</config>
+		<config>
+			<file>src/main/config/flow/createStudent-flow.xml</file>
+			<name><![CDATA[createStudent-flow]]></name>
+		</config>
+		<config>
+			<file>src/main/config/flow/createStudent-flow.xml</file>
+			<name><![CDATA[createStudent-flow]]></name>
+		</config>
+	</configs>
+</webflow-project-description>
