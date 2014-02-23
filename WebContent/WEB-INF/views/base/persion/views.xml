@@ -4,18 +4,18 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="persion/main" extends="main">
-		<put-attribute name="body" value="/WEB-INF/views/persion/main.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/base/persion/main.jsp" />
 	</definition>
 	<definition name="persion/home" extends="persion/main">
-		<put-attribute name="persionBody" value="/WEB-INF/views/persion/home.jsp" cascade="true"/>
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/home.jsp" cascade="true"/>
 	</definition>
 	<definition name="persion/detail" extends="persion/main">
-		<put-attribute name="persionBody" value="/WEB-INF/views/persion/detail.jsp" cascade="true"/>
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/detail.jsp" cascade="true"/>
 	</definition>
 	<definition name="persion/edit" extends="persion/main">
-		<put-attribute name="persionBody" value="/WEB-INF/views/persion/edit.jsp" cascade="true"/>
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/edit.jsp" cascade="true"/>
 	</definition>
 	<definition name="persion/grid" extends="persion/main">
-		<put-attribute name="persionBody" value="/WEB-INF/views/persion/grid.jsp" cascade="true"/>
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/grid.jsp" cascade="true"/>
 	</definition>
 </tiles-definitions>

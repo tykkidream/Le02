@@ -4,18 +4,18 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="degree/main" extends="main">
-		<put-attribute name="body" value="/WEB-INF/views/degree/main.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/base/degree/main.jsp" />
 	</definition>
 	<definition name="degree/home" extends="degree/main">
-		<put-attribute name="degreeBody" value="/WEB-INF/views/degree/home.jsp" cascade="true"/>
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/home.jsp" cascade="true"/>
 	</definition>
 	<definition name="degree/detail" extends="degree/main">
-		<put-attribute name="degreeBody" value="/WEB-INF/views/degree/detail.jsp" cascade="true"/>
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/detail.jsp" cascade="true"/>
 	</definition>
 	<definition name="degree/edit" extends="degree/main">
-		<put-attribute name="degreeBody" value="/WEB-INF/views/degree/edit.jsp" cascade="true"/>
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/edit.jsp" cascade="true"/>
 	</definition>
 	<definition name="degree/grid" extends="degree/main">
-		<put-attribute name="degreeBody" value="/WEB-INF/views/degree/grid.jsp" cascade="true"/>
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/grid.jsp" cascade="true"/>
 	</definition>
 </tiles-definitions>
