@@ -19,12 +19,12 @@
 		<tbody>
 		<c:forEach var="item" items="${page.result }">
 		<tr>
-			<td><c:out value="${item.id }" />&nbsp;</td>
-			<td><c:out value="${item.code }" />&nbsp;</td>
-			<td><c:out value="${item.name }" />&nbsp;</td>
-			<td><c:out value="${item.sex }" />&nbsp;</td>
-			<td><c:out value="${item.telephone }" />&nbsp;</td>
-			<td><c:out value="${item.birthDate }" />&nbsp;</td>
+			<td>${item.id }&nbsp;</td>
+			<td>${item.code }&nbsp;</td>
+			<td>${item.name }&nbsp;</td>
+			<td>${item.sex }&nbsp;</td>
+			<td>${item.telephone }&nbsp;</td>
+			<td><fmt:formatDate value="${item.birthDate }" var="_birthDate" type="both" />${_birthDate }&nbsp;</td>
 			<td>
 				<s:url var="manage_view" value="/persion/${item.id }" /><a href="${manage_view }">查看</a>
 				<s:url var="manage_view" value="/persion/edit?id=${item.id }" /><a href="${manage_view }">修改</a>

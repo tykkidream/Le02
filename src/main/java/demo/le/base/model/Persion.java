@@ -2,6 +2,10 @@ package demo.le.base.model;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import dream.keel.base.BaseModel;
@@ -11,6 +15,7 @@ import dream.keel.base.BaseModel;
  * @author Tykkidream
  *
  */
+@XmlRootElement
 public class Persion implements BaseModel<Persion>{
 
 	private static final long serialVersionUID = 6890746001324455994L;
@@ -37,6 +42,7 @@ public class Persion implements BaseModel<Persion>{
     private String lastName;
 
     @Override
+    @XmlAttribute
     public Long getId() {
         return id;
     }
@@ -50,6 +56,7 @@ public class Persion implements BaseModel<Persion>{
      * 姓
      * @return
      */
+    @XmlAttribute
     public String getFirstName() {
         return firstName;
     }
@@ -69,6 +76,7 @@ public class Persion implements BaseModel<Persion>{
      * 性别
      * @return
      */
+    @XmlAttribute
     public String getSex() {
         return sex;
     }
@@ -88,6 +96,7 @@ public class Persion implements BaseModel<Persion>{
      * 电话
      * @return
      */
+    @XmlAttribute
     public String getTelephone() {
         return telephone;
     }
@@ -107,6 +116,7 @@ public class Persion implements BaseModel<Persion>{
      * 生日
      * @return
      */
+    @XmlAttribute
     public Date getBirthDate() {
         return birthDate;
     }
@@ -123,6 +133,7 @@ public class Persion implements BaseModel<Persion>{
      * 籍贯
      * @return
      */
+    @XmlAttribute
     public String getHometown() {
         return hometown;
     }
@@ -139,6 +150,7 @@ public class Persion implements BaseModel<Persion>{
      * 地址
      * @return
      */
+    @XmlAttribute
     public String getAddress() {
         return address;
     }
@@ -155,6 +167,7 @@ public class Persion implements BaseModel<Persion>{
      * 免冠照
      * @return
      */
+    @XmlAttribute
     public String getHatPhoto() {
         return hatPhoto;
     }
@@ -171,6 +184,7 @@ public class Persion implements BaseModel<Persion>{
      * 编码
      * @return
      */
+    @XmlAttribute
     public String getCode() {
         return code;
     }
@@ -190,6 +204,7 @@ public class Persion implements BaseModel<Persion>{
      * 名
      * @return
      */
+    @XmlAttribute
     public String getLastName() {
         return lastName;
     }
@@ -206,6 +221,7 @@ public class Persion implements BaseModel<Persion>{
     }
 
 	@Override
+	@XmlTransient
 	public String getName() {
 		return this.getFirstName() + this.getLastName();
 	}

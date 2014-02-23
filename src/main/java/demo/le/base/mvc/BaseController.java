@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import dream.keel.base.BaseModel;
 import dream.keel.base.BaseService;
@@ -57,6 +58,7 @@ public abstract class BaseController<T extends BaseModel<?>> {
 	public String showGrid(@RequestParam(value = "page", required=false) Page<T> page, Model model){
 		page = this.getBaseService().queryByPage(page);
 		model.addAttribute(page);
+		model.addAttribute(page.getResult());
 		
 		return this.getBaseFoder() + "/grid";
 	}
@@ -79,23 +81,27 @@ public abstract class BaseController<T extends BaseModel<?>> {
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String actionSave(@Valid T t, BindingResult bindingResult, @RequestParam(value="file", required=false) MultipartFile file) {
-		if (bindingResult.hasErrors()) {
-			return this.getBaseFoder() + "/edit";
-		}
+	public ModelAndView actionSave(@Valid T t, BindingResult bindingResult, @RequestParam(value="file", required=false) MultipartFile file) {
+		ModelAndView mav = new ModelAndView();
 		
 		try {
-			if (null != file && !file.isEmpty()) {
-				validateFile(file);
-				saveFile( generateFileName(file, t),file);
+			if (bindingResult.hasErrors()) {
+				mav.addObject("model", t);
+				mav.setViewName(this.getBaseFoder() + "/edit");
+			} else {
+				if (null != file && !file.isEmpty()) {
+					validateFile(file);
+					saveFile( generateFileName(file, t),file);
+				}
+				this.getBaseService().saveOneSelective(t);
+				mav.setViewName("redirect:/"+ this.getBaseFoder() + "/" + t.getId());
 			}
 		} catch (Exception e) {
 			bindingResult.reject(e.getMessage());
-			return this.getBaseFoder() +"/edit";
+			mav.setViewName(this.getBaseFoder() + "/edit");
 		}
 		
-		this.getBaseService().saveOneSelective(t);
-		return "redirect:/"+ this.getBaseFoder() + "/" + t.getId();
+		return mav;
 	}
 
 	protected void getOne(Long id, Model model) {

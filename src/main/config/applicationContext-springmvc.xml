@@ -40,7 +40,7 @@
 		<!-- 在没有扩展名时即: "/user/getUser" 时的默认展现形式 -->
         <property name="defaultContentType" value="text/html" />
 		<!-- 用于开启 /user/getUser?format=json 的支持 -->
-		<property name="favorParameter" value="false" />
+		<property name="favorParameter" value="true" />
 		<!-- 修改参数名，默认是format -->
 		<property name="parameterName" value="fm" />
         <!-- 扩展名至mimeType的映射,即 /getUser.json => application/json -->
@@ -63,12 +63,12 @@
 				<!-- <property name="prefix" value="/WEB-INF/views/" /> -->
 				<!-- <property name="suffix" value=".jsp"></property> -->
 				<!-- </bean> -->
+				<!-- 对于Tiles管理的JSP。 -->
+				<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
 			</list>
 		</property>
 		<property name="defaultViews">
 			<list>
-				<!-- 对于Html。 -->
-				<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
 				<!-- for application/json -->
 				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
 				<!-- for application/xml -->

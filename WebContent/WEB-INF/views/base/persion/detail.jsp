@@ -29,7 +29,7 @@
 		</tr>
 		<tr>
 			<td>生日</td>
-			<td>${model.birthDate }&nbsp;</td>
+			<td><fmt:formatDate value="${model.birthDate }" var="_birthDate" type="both" />${_birthDate }&nbsp;</td>
 		</tr>
 		<tr>
 			<td>籍贯</td>
