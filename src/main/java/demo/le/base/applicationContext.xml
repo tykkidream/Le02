@@ -5,39 +5,33 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<bean id="UserMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="demo.le.base.dao.UserMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-		<!-- <property name="sqlSessionTemplate" ref="sqlSessionTemplate" /> -->
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
 	</bean>
 	
-	<bean id="PersionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<bean id="persionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="demo.le.base.dao.PersionMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-		<!-- <property name="sqlSessionTemplate" ref="sqlSessionTemplate" /> -->
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
 	</bean>
 	
-	<bean id="DegreeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<bean id="degreeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="demo.le.base.dao.DegreeMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
 	</bean>
 	
-	<bean id="MajorMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<bean id="majorMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="demo.le.base.dao.MajorMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
 	</bean>
 	
-	<bean id="MajorTypeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<bean id="majorTypeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="demo.le.base.dao.MajorTypeMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
 	</bean>
 	
-	<bean id="DegreeServiceImpl" class="demo.le.base.service.impl.DegreeServiceImpl">
-		<property name="baseDao" ref="DegreeMapper" />
-	</bean>
-	
-	<bean id="PersionServiceImpl" class="demo.le.base.service.impl.PersionServiceImpl">
-		<property name="baseDao" ref="PersionMapper" />
-	</bean>
+	<bean id="degreeServiceImpl" class="demo.le.base.service.impl.DegreeServiceImpl" p:baseDao-ref="degreeMapper"/>
+
+	<bean id="persionServiceImpl" class="demo.le.base.service.impl.PersionServiceImpl" p:baseDao-ref="persionMapper"/>
 
 </beans>
