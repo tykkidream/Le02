@@ -7,7 +7,7 @@
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
 	<h3><a href="../">首页</a>&nbsp;&nbsp;<a href="./">人员管理</a>&nbsp;&nbsp;人员学位</h3>
-	<sf:form action="save" method="POST" modelAttribute="model" enctype="multipart/form-data">
+	<sf:form  method="POST" modelAttribute="data" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>ID</td>

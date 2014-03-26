@@ -9,13 +9,19 @@
 	<definition name="persion/home" extends="persion/main">
 		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/home.jsp" cascade="true"/>
 	</definition>
-	<definition name="persion/detail" extends="persion/main">
-		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/detail.jsp" cascade="true"/>
+	<definition name="persion/browse" extends="persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/browse.jsp" cascade="true"/>
 	</definition>
-	<definition name="persion/edit" extends="persion/main">
-		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/edit.jsp" cascade="true"/>
+	<definition name="persion/manage" extends="persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/manage.jsp" cascade="true"/>
 	</definition>
-	<definition name="persion/grid" extends="persion/main">
-		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/grid.jsp" cascade="true"/>
+	<definition name="persion/detailView" extends="persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/detailView.jsp" cascade="true"/>
+	</definition>
+	<definition name="persion/detailEdit" extends="persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/detailEdit.jsp" cascade="true"/>
+	</definition>
+	<definition name="persion/new" extends="persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/detailEdit.jsp" cascade="true"/>
 	</definition>
 </tiles-definitions>

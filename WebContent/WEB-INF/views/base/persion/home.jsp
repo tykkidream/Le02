@@ -6,7 +6,7 @@
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
 	<ul>
-		<li><a href="grid">浏览所有的人员</a></li>
-		<li><a href="edit">创建一个新人员</a></li>
+		<li><a href="manage">浏览所有的人员</a></li>
+		<li><a href="new">创建一个新人员</a></li>
 	</ul>
 </div>
