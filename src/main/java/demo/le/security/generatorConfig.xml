@@ -40,7 +40,7 @@
 		 -->
 		<javaModelGenerator
 			targetPackage="demo.le.security.model"
-			targetProject="Le01" />
+			targetProject="Le02" />
 		
 		<!-- 
 			生成sqlMapper XML文件。
@@ -48,7 +48,7 @@
 				targetProject：生成的SQL接口对应的项目，对应工作空间的项目。
 		 -->
 		<sqlMapGenerator targetPackage="demo.le.security.dao"
-			targetProject="Le01" />
+			targetProject="Le02" />
 		
 		<!-- 
 			生成DAO接口。
@@ -57,7 +57,7 @@
 				type：映射文件类型，一般为XMLMAPPER。
 		 -->
 		<javaClientGenerator targetPackage="demo.le.security.dao"
-			targetProject="Le01" type="XMLMAPPER" />
+			targetProject="Le02" type="XMLMAPPER" />
 		
 		<!--	生成实体类。
 					tableName：需要生成的表名。
@@ -71,86 +71,35 @@
 		<!--	</table>	-->
 		
 		
-		<table schema="" tableName="BA_DEGREE" domainObjectName="Degree"
+		<table schema="" tableName="SECURITY_MODEL" domainObjectName="Model"
 			enableCountByExample="false" enableUpdateByExample="false"  
 			enableDeleteByExample="false" enableSelectByExample="false"  
 			selectByExampleQueryId="false">
 		</table>
-		<table schema="" tableName="BA_MAJOR" domainObjectName="Major"
+		<table schema="" tableName="SECURITY_MODEL_PERMISSIONS" domainObjectName="ModelPermissions"
 			enableCountByExample="false" enableUpdateByExample="false"  
 			enableDeleteByExample="false" enableSelectByExample="false"  
 			selectByExampleQueryId="false">
 		</table>
-		<table schema="" tableName="BA_MAJOR_TYPE" domainObjectName="MajorType"
+		<table schema="" tableName="SECURITY_PERMISSIONS" domainObjectName="Permissions"
 			enableCountByExample="false" enableUpdateByExample="false"  
 			enableDeleteByExample="false" enableSelectByExample="false"  
 			selectByExampleQueryId="false">
 		</table>
-		<table schema="" tableName="BA_PERSION" domainObjectName="Persion"
+		<table schema="" tableName="SECURITY_PERMISSIONS_STRATEGY" domainObjectName="PermissionsStrategy"
 			enableCountByExample="false" enableUpdateByExample="false"  
 			enableDeleteByExample="false" enableSelectByExample="false"  
 			selectByExampleQueryId="false">
 		</table>
-		<table schema="" tableName="BA_USER" domainObjectName="User"
+		<table schema="" tableName="SECURITY_STRATEGY" domainObjectName="Strategy"
 			enableCountByExample="false" enableUpdateByExample="false"  
 			enableDeleteByExample="false" enableSelectByExample="false"  
 			selectByExampleQueryId="false">
 		</table>
-	</context>
-
-	<context id="context2">
-		<commentGenerator>
-			<property name="suppressAllComments" value="true" />
-		</commentGenerator>
-		
-		<jdbcConnection
-			driverClass="oracle.jdbc.OracleDriver"
-			connectionURL="jdbc:oracle:thin:@localhost:1521:orcl"
-			userId="c##le"
-			password="le" />
-		<javaModelGenerator
-			targetPackage="demo.le.base.model"
-			targetProject="Le01" />
-		<sqlMapGenerator targetPackage="demo.le.base.dao"
-			targetProject="Le01" />
-		<javaClientGenerator targetPackage="demo.le.base.dao"
-			targetProject="Le01" type="XMLMAPPER" />
-		
-		<table schema="" tableName="SC_CLASSES" domainObjectName="Classes"
-			enableCountByExample="false" enableUpdateByExample="false"  
-			enableDeleteByExample="false" enableSelectByExample="false"  
-			selectByExampleQueryId="false">
-		</table>
-		<table schema="" tableName="SC_EDUCATIONAL_ATTAINMENT" domainObjectName="EducationalAttainment"
-			enableCountByExample="false" enableUpdateByExample="false"  
-			enableDeleteByExample="false" enableSelectByExample="false"  
-			selectByExampleQueryId="false">
-		</table>
-		<table schema="" tableName="SC_GRADE" domainObjectName="Grade"
-			enableCountByExample="false" enableUpdateByExample="false"  
-			enableDeleteByExample="false" enableSelectByExample="false"  
-			selectByExampleQueryId="false">
-		</table>
-		<table schema="" tableName="SC_REWARD_PUNISH" domainObjectName="RewardPunish"
-			enableCountByExample="false" enableUpdateByExample="false"  
-			enableDeleteByExample="false" enableSelectByExample="false"  
-			selectByExampleQueryId="false">
-		</table>
-		<table schema="" tableName="SC_SCHOOL" domainObjectName="School"
-			enableCountByExample="false" enableUpdateByExample="false"  
-			enableDeleteByExample="false" enableSelectByExample="false"  
-			selectByExampleQueryId="false">
-		</table>
-		<table schema="" tableName="SC_STUDENT" domainObjectName="Student"
-			enableCountByExample="false" enableUpdateByExample="false"  
-			enableDeleteByExample="false" enableSelectByExample="false"  
-			selectByExampleQueryId="false">
-		</table>
-		<table schema="" tableName="SC_TEACHER" domainObjectName="Teacher"
+		<table schema="" tableName="SECURITY_USER_PERMISSIONS" domainObjectName="UserPermissions"
 			enableCountByExample="false" enableUpdateByExample="false"  
 			enableDeleteByExample="false" enableSelectByExample="false"  
 			selectByExampleQueryId="false">
 		</table>
 	</context>
-
 </generatorConfiguration>

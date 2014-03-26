@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.security.dao.PermissionsStrategyMapper" >
+  <resultMap id="BaseResultMap" type="demo.le.security.model.PermissionsStrategyKey" >
+    <id column="PERMISSIONS_ID" property="permissionsId" jdbcType="DECIMAL" />
+    <id column="STRATEGY_ID" property="strategyId" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="demo.le.security.model.PermissionsStrategyKey" >
+    delete from SECURITY_PERMISSIONS_STRATEGY
+    where PERMISSIONS_ID = #{permissionsId,jdbcType=DECIMAL}
+      and STRATEGY_ID = #{strategyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="demo.le.security.model.PermissionsStrategyKey" >
+    insert into SECURITY_PERMISSIONS_STRATEGY (PERMISSIONS_ID, STRATEGY_ID)
+    values (#{permissionsId,jdbcType=DECIMAL}, #{strategyId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="demo.le.security.model.PermissionsStrategyKey" >
+    insert into SECURITY_PERMISSIONS_STRATEGY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="permissionsId != null" >
+        PERMISSIONS_ID,
+      </if>
+      <if test="strategyId != null" >
+        STRATEGY_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="permissionsId != null" >
+        #{permissionsId,jdbcType=DECIMAL},
+      </if>
+      <if test="strategyId != null" >
+        #{strategyId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

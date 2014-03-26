@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.security.dao.UserPermissionsMapper" >
+  <resultMap id="BaseResultMap" type="demo.le.security.model.UserPermissions" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="PERMISSIONS_ID" property="permissionsId" jdbcType="DECIMAL" />
+    <result column="VALUE" property="value" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USER_ID, PERMISSIONS_ID, VALUE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from SECURITY_USER_PERMISSIONS
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from SECURITY_USER_PERMISSIONS
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="demo.le.security.model.UserPermissions" >
+    insert into SECURITY_USER_PERMISSIONS (ID, USER_ID, PERMISSIONS_ID, 
+      VALUE)
+    values (#{id,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, #{permissionsId,jdbcType=DECIMAL}, 
+      #{value,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="demo.le.security.model.UserPermissions" >
+    insert into SECURITY_USER_PERMISSIONS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="permissionsId != null" >
+        PERMISSIONS_ID,
+      </if>
+      <if test="value != null" >
+        VALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="permissionsId != null" >
+        #{permissionsId,jdbcType=DECIMAL},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="demo.le.security.model.UserPermissions" >
+    update SECURITY_USER_PERMISSIONS
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="permissionsId != null" >
+        PERMISSIONS_ID = #{permissionsId,jdbcType=DECIMAL},
+      </if>
+      <if test="value != null" >
+        VALUE = #{value,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="demo.le.security.model.UserPermissions" >
+    update SECURITY_USER_PERMISSIONS
+    set USER_ID = #{userId,jdbcType=DECIMAL},
+      PERMISSIONS_ID = #{permissionsId,jdbcType=DECIMAL},
+      VALUE = #{value,jdbcType=CHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.security.dao.PermissionsMapper" >
+  <resultMap id="BaseResultMap" type="demo.le.security.model.Permissions" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="NAME" property="name" jdbcType="CHAR" />
+    <result column="DESCRIBE" property="describe" jdbcType="VARCHAR" />
+    <result column="EXECUTIVE_PROGRAM" property="executiveProgram" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, NAME, DESCRIBE, EXECUTIVE_PROGRAM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from SECURITY_PERMISSIONS
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from SECURITY_PERMISSIONS
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="demo.le.security.model.Permissions" >
+    insert into SECURITY_PERMISSIONS (ID, NAME, DESCRIBE, 
+      EXECUTIVE_PROGRAM)
+    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=CHAR}, #{describe,jdbcType=VARCHAR}, 
+      #{executiveProgram,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="demo.le.security.model.Permissions" >
+    insert into SECURITY_PERMISSIONS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="describe != null" >
+        DESCRIBE,
+      </if>
+      <if test="executiveProgram != null" >
+        EXECUTIVE_PROGRAM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="describe != null" >
+        #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="executiveProgram != null" >
+        #{executiveProgram,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="demo.le.security.model.Permissions" >
+    update SECURITY_PERMISSIONS
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=CHAR},
+      </if>
+      <if test="describe != null" >
+        DESCRIBE = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="executiveProgram != null" >
+        EXECUTIVE_PROGRAM = #{executiveProgram,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="demo.le.security.model.Permissions" >
+    update SECURITY_PERMISSIONS
+    set NAME = #{name,jdbcType=CHAR},
+      DESCRIBE = #{describe,jdbcType=VARCHAR},
+      EXECUTIVE_PROGRAM = #{executiveProgram,jdbcType=CHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
