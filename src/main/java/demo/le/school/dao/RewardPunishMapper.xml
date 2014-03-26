@@ -20,15 +20,15 @@
 	<select id="select" resultMap="BaseResultMap" parameterType="long">
 		select
 		<include refid="Base_Column_List" />
-		from SC_REWARD_PUNISH
+		from SCHOOL_REWARD_PUNISH
 		where ID = #{id,jdbcType=DECIMAL}
 	</select>
 	<delete id="delete" parameterType="long">
-		delete from SC_REWARD_PUNISH
+		delete from SCHOOL_REWARD_PUNISH
 		where ID = #{id,jdbcType=DECIMAL}
 	</delete>
 	<insert id="insert" parameterType="RewardPunish">
-		insert into SC_REWARD_PUNISH (
+		insert into SCHOOL_REWARD_PUNISH (
 			<include refid="Base_Column_List" />
 		) values (
 			#{id,jdbcType=DECIMAL},
@@ -41,7 +41,7 @@
 		<selectKey keyProperty="id" order="BEFORE" resultType="long">
 			select SEQ_REWARD_PUNISH_ID.nextval from dual
 		</selectKey>
-		insert into SC_REWARD_PUNISH
+		insert into SCHOOL_REWARD_PUNISH
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				ID,
@@ -78,7 +78,7 @@
 		</trim>
 	</insert>
 	<update id="updateSelective" parameterType="RewardPunish">
-		update SC_REWARD_PUNISH
+		update SCHOOL_REWARD_PUNISH
 		<set>
 			<if test="code != null">
 				CODE = #{code,jdbcType=CHAR},
@@ -96,7 +96,7 @@
 		where ID = #{id,jdbcType=DECIMAL}
 	</update>
 	<update id="update" parameterType="RewardPunish">
-		update SC_REWARD_PUNISH
+		update SCHOOL_REWARD_PUNISH
 		set
 			CODE = #{code,jdbcType=CHAR},
 			CONTENT = #{content,jdbcType=VARCHAR},

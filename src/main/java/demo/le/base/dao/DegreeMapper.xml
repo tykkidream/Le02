@@ -14,13 +14,13 @@
 	<select id="select" resultMap="BaseResultMap" parameterType="long">
 		select
 		<include refid="Base_Column_List" />
-		from BA_DEGREE
+		from BASE_DEGREE
 		where ID = #{id,jdbcType=DECIMAL}
 	</select>
 	<select id="selectByArray" resultMap="BaseResultMap" parameterType="long">
 		select
 		<include refid="Base_Column_List" />
-		from BA_DEGREE
+		from BASE_DEGREE
 		<where>
 			<if test="array != null and array.length &gt; 0 ">
 				ID in <foreach collection="array" item="item" open="(" separator="," close=")">
@@ -32,7 +32,7 @@
 	<select id="selectByList" resultMap="BaseResultMap" parameterType="list">
 		select
 		<include refid="Base_Column_List" />
-		from BA_DEGREE
+		from BASE_DEGREE
 		<where>
 			<if test ="list != null">
 				ID in <foreach collection="list" item="item" open="(" separator="," close=")">
@@ -44,17 +44,17 @@
 	<select id="selectByParameters" resultMap="BaseResultMap" parameterType="map">
 		select
 		<include refid="Base_Column_List" />
-		from BA_DEGREE
+		from BASE_DEGREE
 		<where>
 		
 		</where>
 	</select>
 	<delete id="delete" parameterType="long">
-		delete from BA_DEGREE
+		delete from BASE_DEGREE
 		where ID = #{id,jdbcType=DECIMAL}
 	</delete>
 	<insert id="insert" parameterType="Degree">
-		insert into BA_DEGREE (
+		insert into BASE_DEGREE (
 			ID,
 			CODE,
 			NAME
@@ -67,7 +67,7 @@
 		<selectKey keyProperty="id" order="BEFORE" resultType="long">
 			select SEQ_DEGREE_ID.nextval from dual
 		</selectKey>
-		insert into BA_DEGREE
+		insert into BASE_DEGREE
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				ID,
@@ -92,14 +92,14 @@
 		</trim>
 	</insert>
 	<update id="update" parameterType="Degree">
-		update BA_DEGREE
+		update BASE_DEGREE
 		set
 			CODE = #{code,jdbcType=CHAR},
 			NAME = #{name,jdbcType=CHAR}
 		where ID = #{id,jdbcType=DECIMAL}
 	</update>
 	<update id="updateSelective" parameterType="Degree">
-		update BA_DEGREE
+		update BASE_DEGREE
 		<set>
 			<if test="code != null">
 				CODE = #{code,jdbcType=CHAR},

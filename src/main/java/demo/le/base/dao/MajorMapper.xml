@@ -20,13 +20,13 @@
 	<select id="select" resultMap="BaseResultMap" parameterType="long">
 		select
 		<include refid="Base_Column_List" />
-		from BA_MAJOR
+		from BASE_MAJOR
 		where ID = #{id,jdbcType=DECIMAL}
 	</select>
 	<select id="selectByArray" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from BA_MAJOR
+		from BASE_MAJOR
 		<where>
 			<if test="array != null and array.length &gt; 0 ">
 				ID in <foreach collection="array" item="item" open="(" separator="," close=")">
@@ -38,7 +38,7 @@
 	<select id="selectByList" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from BA_MAJOR
+		from BASE_MAJOR
 		<where>
 			<if test="list != null and list.size &gt; 0 ">
 				ID in <foreach collection="list" item="item" open="(" separator="," close=")">
@@ -48,11 +48,11 @@
 		</where>
 	</select>
 	<delete id="delete" parameterType="long">
-		delete from BA_MAJOR
+		delete from BASE_MAJOR
 		where ID = #{id,jdbcType=DECIMAL}
 	</delete>
 	<insert id="insert" parameterType="Major">
-		insert into BA_MAJOR (
+		insert into BASE_MAJOR (
 			<include refid="Base_Column_List" />
 		) values (
 			#{id,jdbcType=DECIMAL},
@@ -65,7 +65,7 @@
 		<selectKey keyProperty="id" order="BEFORE" resultType="long">
 			select SEQ_MAJOR_ID.nextval from dual
 		</selectKey>
-		insert into BA_MAJOR
+		insert into BASE_MAJOR
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				ID,
@@ -102,7 +102,7 @@
 		</trim>
 	</insert>
 	<update id="updateSelective" parameterType="Major">
-		update BA_MAJOR
+		update BASE_MAJOR
 		<set>
 			<if test="code != null">
 				CODE = #{code,jdbcType=CHAR},
@@ -120,7 +120,7 @@
 		where ID = #{id,jdbcType=DECIMAL}
 	</update>
 	<update id="update" parameterType="Major">
-		update BA_MAJOR
+		update BASE_MAJOR
 		set
 			CODE = #{code,jdbcType=CHAR},
 			NAME = #{name,jdbcType=CHAR},

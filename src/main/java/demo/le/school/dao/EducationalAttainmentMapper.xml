@@ -24,15 +24,15 @@
 	<select id="select" resultMap="BaseResultMap" parameterType="long">
 		select
 		<include refid="Base_Column_List" />
-		from SC_EDUCATIONAL_ATTAINMENT
+		from SCHOOL_EDUCATIONAL_ATTAINMENT
 		where ID = #{id,jdbcType=DECIMAL}
 	</select>
 	<delete id="delete" parameterType="long">
-		delete from SC_EDUCATIONAL_ATTAINMENT
+		delete from SCHOOL_EDUCATIONAL_ATTAINMENT
 		where ID = #{id,jdbcType=DECIMAL}
 	</delete>
 	<insert id="insert" parameterType="EducationalAttainment">
-		insert into SC_EDUCATIONAL_ATTAINMENT (
+		insert into SCHOOL_EDUCATIONAL_ATTAINMENT (
 			<include refid="Base_Column_List" />
 		) values (
 			#{id,jdbcType=DECIMAL},
@@ -47,7 +47,7 @@
 		<selectKey keyProperty="id" order="BEFORE" resultType="long">
 			select SEQ_EDUCATIONAL_ATTAINMENT_ID.nextval from dual
 		</selectKey>
-		insert into SC_EDUCATIONAL_ATTAINMENT
+		insert into SCHOOL_EDUCATIONAL_ATTAINMENT
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				ID,
@@ -96,7 +96,7 @@
 		</trim>
 	</insert>
 	<update id="updateSelective" parameterType="EducationalAttainment">
-		update SC_EDUCATIONAL_ATTAINMENT
+		update SCHOOL_EDUCATIONAL_ATTAINMENT
 		<set>
 			<if test="code != null">
 				CODE = #{code,jdbcType=CHAR},
@@ -120,7 +120,7 @@
 		where ID = #{id,jdbcType=DECIMAL}
 	</update>
 	<update id="update" parameterType="EducationalAttainment">
-		update SC_EDUCATIONAL_ATTAINMENT
+		update SCHOOL_EDUCATIONAL_ATTAINMENT
 		set
 			CODE = #{code,jdbcType=CHAR},
 			STUDENT_ID = #{studentId,jdbcType=DECIMAL},

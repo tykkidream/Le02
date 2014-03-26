@@ -37,13 +37,13 @@
 	<select id="select" resultMap="BaseResultMap" parameterType="long">
 		select
 		<include refid="Base_Column_List" />
-		from BA_USER
+		from BASE_USER
 		where ID = #{id,jdbcType=DECIMAL}
 	</select>
 	<select id="selectByArray" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from BA_USER
+		from BASE_USER
 		<where>
 			<if test="array != null and array.length &gt; 0 ">
 				ID in <foreach collection="array" item="item" open="(" separator="," close=")">
@@ -55,7 +55,7 @@
 	<select id="selectByList" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from BA_USER
+		from BASE_USER
 		<where>
 			<if test="list != null and list.size &gt; 0 ">
 				ID in <foreach collection="list" item="item" open="(" separator="," close=")">
@@ -65,11 +65,11 @@
 		</where>
 	</select>
 	<delete id="delete" parameterType="long">
-		delete from BA_USER
+		delete from BASE_USER
 		where ID = #{id,jdbcType=DECIMAL}
 	</delete>
 	<insert id="insert" parameterType="User">
-		insert into BA_USER (
+		insert into BASE_USER (
 			<include refid="Base_Column_List" />
 		) values (
 			#{id,jdbcType=DECIMAL},
@@ -92,7 +92,7 @@
 			select SEQ_USER_ID.nextval from dual
 		</selectKey>
 		insert into
-		BA_USER
+		BASE_USER
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 				ID,
 			<if test="username != null">
@@ -179,7 +179,7 @@
 		</trim>
 	</insert>
 	<update id="updateSelective" parameterType="User">
-		update BA_USER
+		update BASE_USER
 		<set>
 			<if test="username != null">
 				USERNAME = #{username,jdbcType=CHAR},
@@ -224,7 +224,7 @@
 		where ID = #{id,jdbcType=DECIMAL}
 	</update>
 	<update id="update" parameterType="User">
-		update BA_USER
+		update BASE_USER
 		set
 			USERNAME = #{username,jdbcType=CHAR},
 			NICKNAME = #{nickname,jdbcType=CHAR},

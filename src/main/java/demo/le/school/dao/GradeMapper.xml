@@ -14,15 +14,15 @@
 	<select id="select" resultMap="BaseResultMap" parameterType="long">
 		select
 		<include refid="Base_Column_List" />
-		from SC_GRADE
+		from SCHOOL_GRADE
 		where ID = #{id,jdbcType=DECIMAL}
 	</select>
 	<delete id="delete" parameterType="long">
-		delete from SC_GRADE
+		delete from SCHOOL_GRADE
 		where ID = #{id,jdbcType=DECIMAL}
 	</delete>
 	<insert id="insert" parameterType="Grade">
-		insert into SC_GRADE (
+		insert into SCHOOL_GRADE (
 			<include refid="Base_Column_List" />
 		) values (
 			#{id,jdbcType=DECIMAL},
@@ -33,7 +33,7 @@
 		<selectKey keyProperty="id" order="BEFORE" resultType="long">
 			select SEQ_GRADE_ID.nextval from dual
 		</selectKey>
-		insert into SC_GRADE
+		insert into SCHOOL_GRADE
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				ID,
@@ -58,7 +58,7 @@
 		</trim>
 	</insert>
 	<update id="updateSelective" parameterType="Grade">
-		update SC_GRADE
+		update SCHOOL_GRADE
 		<set>
 			<if test="code != null">
 				CODE = #{code,jdbcType=VARCHAR},
@@ -70,7 +70,7 @@
 		where ID = #{id,jdbcType=DECIMAL}
 	</update>
 	<update id="update" parameterType="Grade">
-		update SC_GRADE
+		update SCHOOL_GRADE
 		set
 			CODE = #{code,jdbcType=VARCHAR},
 			NAME = #{name,jdbcType=CHAR}
