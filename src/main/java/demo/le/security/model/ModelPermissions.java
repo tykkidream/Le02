@@ -1,35 +1,39 @@
 package demo.le.security.model;
 
-public class ModelPermissions {
-    private Short id;
+import dream.keel.base.BaseModel;
 
-    private Short modelId;
+public class ModelPermissions implements BaseModel<ModelPermissions>{
+	private static final long serialVersionUID = 6085200500011945460L;
 
-    private Short permissionsId;
+	private Long id;
+
+    private Long modelId;
+
+    private Long permissionsId;
 
     private String value;
 
-    public Short getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Short id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Short getModelId() {
+    public Long getModelId() {
         return modelId;
     }
 
-    public void setModelId(Short modelId) {
+    public void setModelId(Long modelId) {
         this.modelId = modelId;
     }
 
-    public Short getPermissionsId() {
+    public Long getPermissionsId() {
         return permissionsId;
     }
 
-    public void setPermissionsId(Short permissionsId) {
+    public void setPermissionsId(Long permissionsId) {
         this.permissionsId = permissionsId;
     }
 
@@ -40,4 +44,14 @@ public class ModelPermissions {
     public void setValue(String value) {
         this.value = value;
     }
+
+	@Override
+	public String getName() {
+		return null;
+	}
+
+	@Override
+	public void setName(String arg0) {
+		
+	}
 }

@@ -1,19 +1,23 @@
 package demo.le.security.model;
 
-public class Permissions {
-    private Short id;
+import dream.keel.base.BaseModel;
+
+public class Permissions implements BaseModel<Permissions>{
+	private static final long serialVersionUID = 575258359331307477L;
+
+	private Long id;
 
     private String name;
 
     private String describe;
 
-    private String executiveProgram;
+    private String executiveProgram; 
 
-    public Short getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Short id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

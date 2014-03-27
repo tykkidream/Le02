@@ -1,17 +1,22 @@
 package demo.le.security.model;
 
-public class Model {
-    private Short id;
+import dream.keel.base.BaseModel;
+
+public class Model implements BaseModel<Model>{
+	
+	private static final long serialVersionUID = 6032710580740132372L;
+
+	private Long id;
 
     private String name;
 
     private String tableName;
 
-    public Short getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Short id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
