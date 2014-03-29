@@ -27,6 +27,14 @@
 		<typeAlias alias="School" type="demo.le.school.model.School"/>
 		<typeAlias alias="Student" type="demo.le.school.model.Student"/>
 		<typeAlias alias="Teacher" type="demo.le.school.model.Teacher"/>
+		
+		<typeAlias alias="Model" type="demo.le.security.model.Model"/>
+		<typeAlias alias="ModelPermissions" type="demo.le.security.model.ModelPermissions"/>
+		<typeAlias alias="Permissions" type="demo.le.security.model.Permissions"/>
+		<typeAlias alias="PermissionsStrategy" type="demo.le.security.model.PermissionsStrategy"/>
+		<typeAlias alias="Strategy" type="demo.le.security.model.Strategy"/>
+		<typeAlias alias="UserPermissions" type="demo.le.security.model.UserPermissions"/>
+		
 	</typeAliases>
 
 	<plugins>
