@@ -1,82 +1,125 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="demo.le.security.dao.ModelPermissionsMapper" >
-  <resultMap id="BaseResultMap" type="demo.le.security.model.ModelPermissions" >
-    <id column="ID" property="id" jdbcType="DECIMAL" />
-    <result column="MODEL_ID" property="modelId" jdbcType="DECIMAL" />
-    <result column="PERMISSIONS_ID" property="permissionsId" jdbcType="DECIMAL" />
-    <result column="VALUE" property="value" jdbcType="CHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    ID, MODEL_ID, PERMISSIONS_ID, VALUE
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
-    select 
-    <include refid="Base_Column_List" />
-    from SECURITY_MODEL_PERMISSIONS
-    where ID = #{id,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
-    delete from SECURITY_MODEL_PERMISSIONS
-    where ID = #{id,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="demo.le.security.model.ModelPermissions" >
-    insert into SECURITY_MODEL_PERMISSIONS (ID, MODEL_ID, PERMISSIONS_ID, 
-      VALUE)
-    values (#{id,jdbcType=DECIMAL}, #{modelId,jdbcType=DECIMAL}, #{permissionsId,jdbcType=DECIMAL}, 
-      #{value,jdbcType=CHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="demo.le.security.model.ModelPermissions" >
-    insert into SECURITY_MODEL_PERMISSIONS
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        ID,
-      </if>
-      <if test="modelId != null" >
-        MODEL_ID,
-      </if>
-      <if test="permissionsId != null" >
-        PERMISSIONS_ID,
-      </if>
-      <if test="value != null" >
-        VALUE,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
-      </if>
-      <if test="modelId != null" >
-        #{modelId,jdbcType=DECIMAL},
-      </if>
-      <if test="permissionsId != null" >
-        #{permissionsId,jdbcType=DECIMAL},
-      </if>
-      <if test="value != null" >
-        #{value,jdbcType=CHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="demo.le.security.model.ModelPermissions" >
-    update SECURITY_MODEL_PERMISSIONS
-    <set >
-      <if test="modelId != null" >
-        MODEL_ID = #{modelId,jdbcType=DECIMAL},
-      </if>
-      <if test="permissionsId != null" >
-        PERMISSIONS_ID = #{permissionsId,jdbcType=DECIMAL},
-      </if>
-      <if test="value != null" >
-        VALUE = #{value,jdbcType=CHAR},
-      </if>
-    </set>
-    where ID = #{id,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="demo.le.security.model.ModelPermissions" >
-    update SECURITY_MODEL_PERMISSIONS
-    set MODEL_ID = #{modelId,jdbcType=DECIMAL},
-      PERMISSIONS_ID = #{permissionsId,jdbcType=DECIMAL},
-      VALUE = #{value,jdbcType=CHAR}
-    where ID = #{id,jdbcType=DECIMAL}
-  </update>
+<mapper namespace="demo.le.security.dao.ModelPermissionsMapper">
+	<resultMap id="_base_result_map" type="ModelPermissions">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="MODEL_ID" property="modelId" jdbcType="DECIMAL" />
+		<result column="PERMISSIONS_ID" property="permissionsId" jdbcType="DECIMAL" />
+		<result column="VALUE" property="value" jdbcType="CHAR" />
+	</resultMap>
+	
+	<sql id="_base_column_list">
+		ID, MODEL_ID, PERMISSIONS_ID, VALUE
+	</sql>
+	<sql id="_base_sql_delete">
+		delete from SECURITY_MODEL_PERMISSIONS
+	</sql>
+	<sql id="_base_sql_select">
+		select <include refid="_base_column_list" /> from SECURITY_MODEL_PERMISSIONS
+	</sql>
+	<sql id="_base_sql_parameters">
+		
+	</sql>
+	
+	<select id="selectByKey" resultMap="_base_result_Map" parameterType="Long">
+		<include refid="_base_sql_select"/>
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<select id="selectByArray" resultMap="_base_result_Map" parameterType="Array">
+		<include refid="_base_sql_select"/>
+		<where>
+			<if test="array != null and array.length &gt; 0 ">
+				ID in <foreach collection="array" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByList" resultMap="_base_result_Map" parameterType="List">
+		<include refid="_base_sql_select"/>
+		<where>
+			<if test ="list != null and list.size &gt; 0">
+				ID in <foreach collection="list" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item.id, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByParameters" resultMap="_base_result_Map" parameterType="Map">
+		<include refid="_base_sql_select"/>
+		<where>
+		
+		</where>
+	</select>
+	
+	<delete id="delete" parameterType="Model">
+		<include refid="_base_sql_delete"/> where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<delete id="deleteByKey" parameterType="Long">
+		<include refid="_base_sql_delete"/> where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	
+	<insert id="insert" parameterType="ModelPermissions">
+		insert into SECURITY_MODEL_PERMISSIONS (<include refid="_base_column_list" />)
+		values (
+			#{id,jdbcType=DECIMAL},
+			#{modelId,jdbcType=DECIMAL},
+			#{permissionsId,jdbcType=DECIMAL},
+			#{value,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="ModelPermissions">
+		insert into SECURITY_MODEL_PERMISSIONS
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="modelId != null">
+				MODEL_ID,
+			</if>
+			<if test="permissionsId != null">
+				PERMISSIONS_ID,
+			</if>
+			<if test="value != null">
+				VALUE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="modelId != null">
+				#{modelId,jdbcType=DECIMAL},
+			</if>
+			<if test="permissionsId != null">
+				#{permissionsId,jdbcType=DECIMAL},
+			</if>
+			<if test="value != null">
+				#{value,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="update" parameterType="ModelPermissions">
+		update SECURITY_MODEL_PERMISSIONS
+		set
+			MODEL_ID = #{modelId,jdbcType=DECIMAL},
+			PERMISSIONS_ID = #{permissionsId,jdbcType=DECIMAL},
+			VALUE = #{value,jdbcType=CHAR}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="updatSelective" parameterType="ModelPermissions">
+		update SECURITY_MODEL_PERMISSIONS
+		<set>
+			<if test="modelId != null">
+				MODEL_ID = #{modelId,jdbcType=DECIMAL},
+			</if>
+			<if test="permissionsId != null">
+				PERMISSIONS_ID = #{permissionsId,jdbcType=DECIMAL},
+			</if>
+			<if test="value != null">
+				VALUE = #{value,jdbcType=CHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
 </mapper>

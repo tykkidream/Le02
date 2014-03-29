@@ -1,71 +1,113 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="demo.le.security.dao.ModelMapper" >
-  <resultMap id="BaseResultMap" type="demo.le.security.model.Model" >
-    <id column="ID" property="id" jdbcType="DECIMAL" />
-    <result column="NAME" property="name" jdbcType="CHAR" />
-    <result column="TABLE_NAME" property="tableName" jdbcType="CHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    ID, NAME, TABLE_NAME
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
-    select 
-    <include refid="Base_Column_List" />
-    from SECURITY_MODEL
-    where ID = #{id,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
-    delete from SECURITY_MODEL
-    where ID = #{id,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="demo.le.security.model.Model" >
-    insert into SECURITY_MODEL (ID, NAME, TABLE_NAME
-      )
-    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=CHAR}, #{tableName,jdbcType=CHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="demo.le.security.model.Model" >
-    insert into SECURITY_MODEL
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        ID,
-      </if>
-      <if test="name != null" >
-        NAME,
-      </if>
-      <if test="tableName != null" >
-        TABLE_NAME,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=CHAR},
-      </if>
-      <if test="tableName != null" >
-        #{tableName,jdbcType=CHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="demo.le.security.model.Model" >
-    update SECURITY_MODEL
-    <set >
-      <if test="name != null" >
-        NAME = #{name,jdbcType=CHAR},
-      </if>
-      <if test="tableName != null" >
-        TABLE_NAME = #{tableName,jdbcType=CHAR},
-      </if>
-    </set>
-    where ID = #{id,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="demo.le.security.model.Model" >
-    update SECURITY_MODEL
-    set NAME = #{name,jdbcType=CHAR},
-      TABLE_NAME = #{tableName,jdbcType=CHAR}
-    where ID = #{id,jdbcType=DECIMAL}
-  </update>
-</mapper>
+<!DOCTYPE Mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-Mapper.dtd" >
+<Mapper namespace="demo.le.security.dao.ModelMapper">
+	<resultMap id="_base_result_Map" type="Model">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="NAME" property="name" jdbcType="CHAR" />
+		<result column="TABLE_NAME" property="tableName" jdbcType="CHAR" />
+	</resultMap>
+	
+	<sql id="_base_column_list">
+		ID, NAME, TABLE_NAME
+	</sql>
+	<sql id="_base_sql_delete">
+		delete from SECURITY_MODEL
+	</sql>
+	<sql id="_base_sql_select">
+		select <include refid="_base_column_list" /> from SECURITY_MODEL
+	</sql>
+	<sql id="_base_sql_parameters">
+		
+	</sql>
+	
+	<select id="selectByKey" resultMap="_base_result_Map" parameterType="Long">
+		<include refid="_base_sql_select"/>
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<select id="selectByArray" resultMap="_base_result_Map" parameterType="Array">
+		<include refid="_base_sql_select"/>
+		<where>
+			<if test="array != null and array.length &gt; 0 ">
+				ID in <foreach collection="array" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByList" resultMap="_base_result_Map" parameterType="List">
+		<include refid="_base_sql_select"/>
+		<where>
+			<if test ="list != null and list.size &gt; 0">
+				ID in <foreach collection="list" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item.id, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByParameters" resultMap="_base_result_Map" parameterType="Map">
+		<include refid="_base_sql_select"/>
+		<where>
+		
+		</where>
+	</select>
+	
+	<delete id="delete" parameterType="Model">
+		<include refid="_base_sql_delete"/> where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<delete id="deleteByKey" parameterType="Long">
+		<include refid="_base_sql_delete"/> where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	
+	<insert id="insert" parameterType="Model">
+		insert into SECURITY_MODEL (<include refid="_base_column_list" />)
+		values (
+			#{id,jdbcType=DECIMAL}, 
+			#{name,jdbcType=CHAR}, 
+			#{tableName,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="Model">
+		insert into SECURITY_MODEL
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="tableName != null">
+				TABLE_NAME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=CHAR},
+			</if>
+			<if test="tableName != null">
+				#{tableName,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="update" parameterType="Model">
+		update SECURITY_MODEL
+		set
+			NAME = #{name,jdbcType=CHAR},
+			TABLE_NAME = #{tableName,jdbcType=CHAR}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="updateSelective" parameterType="Model">
+		update SECURITY_MODEL
+		<set>
+			<if test="name != null">
+				NAME = #{name,jdbcType=CHAR},
+			</if>
+			<if test="tableName != null">
+				TABLE_NAME = #{tableName,jdbcType=CHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+</Mapper>
