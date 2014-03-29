@@ -52,7 +52,7 @@
 		</where>
 	</select>
 	
-	<delete id="delete" parameterType="Model">
+	<delete id="delete" parameterType="Permissions">
 		<include refid="_base_sql_delete"/> where ID = #{id,jdbcType=DECIMAL}
 	</delete>
 	<delete id="deleteByKey" parameterType="Long">
