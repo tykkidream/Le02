@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="security/model/main" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/security/model/main.jsp" />
+	</definition>
+	
+	<definition name="security/model/home" extends="security/model/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/security/model/home.jsp" cascade="true"/>
+	</definition>
+	<definition name="security/model/browse" extends="security/model/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/security/model/browse.jsp" cascade="true"/>
+	</definition>
+	<definition name="security/model/manage" extends="security/model/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/security/model/manage.jsp" cascade="true"/>
+	</definition>
+	<definition name="security/model/view" extends="security/model/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/security/model/view.jsp" cascade="true"/>
+	</definition>
+	<definition name="security/model/edit" extends="security/model/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/security/model/edit.jsp" cascade="true"/>
+	</definition>
+	<definition name="security/model/new" extends="security/model/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/security/model/edit.jsp" cascade="true"/>
+	</definition>
+</tiles-definitions>
