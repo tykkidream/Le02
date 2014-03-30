@@ -6,8 +6,13 @@
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
 	<h1>HOME</h1>
+	<h3>基础管理</h3>
 	<ul>
-		<li><a href="degrees/">学位管理</a></li>
+		<li><a href="degree/">学位管理</a></li>
 		<li><a href="persion/">人员管理</a></li>
+	</ul>
+	<h3>安全管理</h3>
+	<ul>
+		<li><a href="model/">模块管理</a></li>
 	</ul>
 </div>

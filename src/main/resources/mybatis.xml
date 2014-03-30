@@ -12,7 +12,7 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias alias="Page" type="dream.keel.base.Page" />
+		<typeAlias alias="Page" type="tykkidream.keel.base.Page" />
 		
 		<typeAlias alias="User" type="demo.le.base.model.User"/>
 		<typeAlias alias="Persion" type="demo.le.base.model.Persion"/>
@@ -38,7 +38,7 @@
 	</typeAliases>
 
 	<plugins>
-		<plugin interceptor="dream.keel.mybatis.interceptor.PageInterceptor">
+		<plugin interceptor="tykkidream.keel.mybatis.interceptor.PageInterceptor">
 			<property name="databaseType" value="Oracle" />
 		</plugin>
 	</plugins>

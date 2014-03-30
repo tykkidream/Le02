@@ -8,58 +8,24 @@
 <div>
 	<h3><a href="../">首页</a>&nbsp;&nbsp;<a href="./">模块管理</a>&nbsp;&nbsp;编辑模块</h3>
 	<sf:form  method="POST" modelAttribute="data" enctype="multipart/form-data">
-		<table>
+		<table border="1">
 			<tr>
-				<td>ID</td>
-				<td><sf:input path="id" /></td>
-				<td><sf:errors path="id" /></td>
+				<td>ID&nbsp;</td>
+				<td><sf:input path="id" />&nbsp;</td>
+				<td><sf:errors path="id" />&nbsp;</td>
 			</tr>
 			<tr>
-				<td>编码</td>
-				<td><sf:input path="code" /></td>
-				<td><sf:errors path="code" /></td>
+				<td>名称&nbsp;</td>
+				<td><sf:input path="name" />&nbsp;</td>
+				<td><sf:errors path="name" />&nbsp;</td>
 			</tr>
 			<tr>
-				<td>姓</td>
-				<td><sf:input path="firstName" /></td>
-				<td><sf:errors path="firstName" /></td>
+				<td>表名&nbsp;</td>
+				<td><sf:input path="tableName" />&nbsp;</td>
+				<td><sf:errors path="tableName" />&nbsp;</td>
 			</tr>
 			<tr>
-				<td>名</td>
-				<td><sf:input path="lastName" /></td>
-				<td><sf:errors path="lastName" /></td>
-			</tr>
-			<tr>
-				<td>性别</td>
-				<td><sf:input path="sex" /></td>
-				<td><sf:errors path="sex" /></td>
-			</tr>
-			<tr>
-				<td>电话</td>
-				<td><sf:input path="telephone" /></td>
-				<td><sf:errors path="telephone" /></td>
-			</tr>
-			<tr>
-				<td>生日</td>
-				<td><sf:input path="birthDate" /></td>
-				<td><sf:errors path="birthDate" /></td>
-			</tr>
-			<tr>
-				<td>籍贯</td>
-				<td><sf:input path="hometown" /></td>
-				<td><sf:errors path="hometown" /></td>
-			</tr>
-			<tr>
-				<td>地址</td>
-				<td><sf:input path="address" /></td>
-				<td><sf:errors path="address" /></td>
-			</tr>
-			<tr>
-				<td>免冠照</td>
-				<td><input name="file" type="file" /></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="保存" /></td>
+				<td colspan="3"><input type="submit" value="保存" /></td>
 			</tr>
 		</table>
 	</sf:form>
