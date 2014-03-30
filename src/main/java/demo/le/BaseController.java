@@ -1,4 +1,4 @@
-package demo.le.base.controller;
+package demo.le;
 
 import java.io.File;
 import java.io.IOException;
@@ -60,6 +60,43 @@ public abstract class BaseController<T extends BaseModel<?>> {
 	@RequestMapping()
 	public String other() {
 		return "redirect:" + this.getBaseFoder() +"/";
+	}
+	
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	public ModelAndView news() {
+		ModelAndView mav = new ModelAndView();
+
+		T t = createModel();
+		mav.addObject("data", t);
+		mav.setViewName(this.getBaseFoder() + "/new");
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
+	public ModelAndView news(@Valid T t, BindingResult bindingResult) {
+		ModelAndView mav = new ModelAndView();
+
+		try {
+			do {
+				if (null != t) {
+					if (!bindingResult.hasErrors() && getBaseService().createSelective(t)) {
+						mav.setViewName("redirect:detail/" + t.getId());
+						break;
+					}
+				} else {
+					t = createModel();
+				}
+				mav.addObject("data", t);
+				mav.setViewName(this.getBaseFoder() + "/new");
+			}while(false);
+		} catch (Exception e) {
+			mav.addObject("data", t);
+			mav.setViewName(this.getBaseFoder() + "/new");
+			bindingResult.reject(e.getMessage());
+		}
+
+		return mav;
 	}
 
 	@RequestMapping(value = "/browse", method = RequestMethod.GET)
@@ -127,42 +164,7 @@ public abstract class BaseController<T extends BaseModel<?>> {
 		return mav;
 	}
 
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
-	public ModelAndView news() {
-		ModelAndView mav = new ModelAndView();
-
-		T t = createModel();
-		mav.addObject("data", t);
-		mav.setViewName(this.getBaseFoder() + "/new");
-
-		return mav;
-	}
-
-	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public ModelAndView news(@Valid T t, BindingResult bindingResult) {
-		ModelAndView mav = new ModelAndView();
-
-		try {
-			do {
-				if (null != t) {
-					if (!bindingResult.hasErrors() && getBaseService().createSelective(t)) {
-						mav.setViewName("redirect:detail/" + t.getId());
-						break;
-					}
-				} else {
-					t = createModel();
-				}
-				mav.addObject("data", t);
-				mav.setViewName(this.getBaseFoder() + "/new");
-			}while(false);
-		} catch (Exception e) {
-			mav.addObject("data", t);
-			mav.setViewName(this.getBaseFoder() + "/new");
-			bindingResult.reject(e.getMessage());
-		}
-
-		return mav;
-	}
+	
 
 	protected boolean validateFile(MultipartFile file) {
 		return true;
