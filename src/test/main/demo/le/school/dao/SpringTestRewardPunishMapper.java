@@ -13,8 +13,8 @@ import org.junit.runners.Parameterized.Parameters;
 
 import demo.le.school.dao.RewardPunishMapper;
 import demo.le.school.model.RewardPunish;
-import dream.keel.base.BaseDao;
-import dream.keel.test.spring.SpringTestDao;
+import tykkidream.keel.base.BaseDao;
+import tykkidream.keel.test.spring.SpringTestDao;
 
 public class SpringTestRewardPunishMapper extends SpringTestDao<RewardPunish>{
 	@Resource

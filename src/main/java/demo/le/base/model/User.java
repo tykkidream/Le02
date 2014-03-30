@@ -2,7 +2,8 @@ package demo.le.base.model;
 
 import java.util.Date;
 
-import dream.keel.base.BaseModel;
+import tykkidream.keel.base.BaseModel;
+
 
 /**
  * 用户

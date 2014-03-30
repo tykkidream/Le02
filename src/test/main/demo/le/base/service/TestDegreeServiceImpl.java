@@ -8,9 +8,9 @@ import java.util.UUID;
 import org.junit.runners.Parameterized.Parameters;
 
 import demo.le.base.model.Degree;
-import dream.keel.base.BaseService;
-import dream.keel.base.Page;
-import dream.keel.test.spring.TestService;
+import tykkidream.keel.base.BaseService;
+import tykkidream.keel.base.Page;
+import tykkidream.keel.test.spring.TestService;
 
 public class TestDegreeServiceImpl extends TestService<Degree>{
 	

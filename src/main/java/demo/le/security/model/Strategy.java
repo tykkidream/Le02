@@ -1,6 +1,6 @@
 package demo.le.security.model;
 
-import dream.keel.base.BaseModel;
+import tykkidream.keel.base.BaseModel;
 
 public class Strategy implements BaseModel<Strategy>{
 	private static final long serialVersionUID = -2161663531513319977L;

@@ -1,7 +1,7 @@
 package demo.le.security.dao;
 
+import tykkidream.keel.base.BaseDao;
 import demo.le.security.model.Model;
-import dream.keel.base.BaseDao;
 
 public interface ModelMapper extends BaseDao<Model>{
 }

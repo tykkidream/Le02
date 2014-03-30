@@ -2,7 +2,7 @@ package demo.le.base.model;
 
 import javax.validation.constraints.Size;
 
-import dream.keel.base.BaseModel;
+import tykkidream.keel.base.BaseModel;
 
 /**
  * 学位

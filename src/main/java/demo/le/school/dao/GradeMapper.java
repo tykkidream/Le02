@@ -1,7 +1,7 @@
 package demo.le.school.dao;
 
+import tykkidream.keel.base.BaseDao;
 import demo.le.school.model.Grade;
-import dream.keel.base.BaseDao;
 
 public interface GradeMapper extends BaseDao<Grade>{
 }

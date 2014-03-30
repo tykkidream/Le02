@@ -1,9 +1,9 @@
 package demo.le.base.service.impl;
 
+import tykkidream.keel.base.SimpleService;
 import demo.le.base.model.Persion;
 import demo.le.base.service.PersionService;
-import dream.keel.base.defaults.BaseServiceImpl;
 
-public class PersionServiceImpl extends BaseServiceImpl<Persion> implements PersionService {
+public class PersionServiceImpl extends SimpleService<Persion> implements PersionService {
 	
 }

@@ -1,7 +1,7 @@
 package demo.le.school.service;
 
+import tykkidream.keel.base.BaseService;
 import demo.le.school.model.Classes;
-import dream.keel.base.BaseService;
 
 public interface ClassesService extends BaseService<Classes> {
 

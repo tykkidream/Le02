@@ -1,7 +1,7 @@
 package demo.le.base.dao;
 
+import tykkidream.keel.base.BaseDao;
 import demo.le.base.model.Persion;
-import dream.keel.base.BaseDao;
 
 public interface PersionMapper  extends BaseDao<Persion>{
 }

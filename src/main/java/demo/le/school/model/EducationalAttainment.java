@@ -2,7 +2,8 @@ package demo.le.school.model;
 
 import java.util.Date;
 
-import dream.keel.base.BaseModel;
+import tykkidream.keel.base.BaseModel;
+
 
 /**
  * 教育经历、学历

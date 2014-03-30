@@ -1,6 +1,7 @@
 package demo.le.school.model;
 
-import dream.keel.base.BaseModel;
+import tykkidream.keel.base.BaseModel;
+
 
 /**
  * 年级

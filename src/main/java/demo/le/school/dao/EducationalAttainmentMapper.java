@@ -1,7 +1,7 @@
 package demo.le.school.dao;
 
+import tykkidream.keel.base.BaseDao;
 import demo.le.school.model.EducationalAttainment;
-import dream.keel.base.BaseDao;
 
 public interface EducationalAttainmentMapper extends BaseDao<EducationalAttainment>{
 }

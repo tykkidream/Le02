@@ -11,8 +11,8 @@ import org.junit.runners.Parameterized.Parameters;
 
 import demo.le.school.dao.SchoolMapper;
 import demo.le.school.model.School;
-import dream.keel.base.BaseDao;
-import dream.keel.test.spring.SpringTestDao;
+import tykkidream.keel.base.BaseDao;
+import tykkidream.keel.test.spring.SpringTestDao;
 
 public class SpringTestSchoolMapper extends SpringTestDao<School>{
 	@Resource

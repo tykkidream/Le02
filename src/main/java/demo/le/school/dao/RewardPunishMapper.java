@@ -1,7 +1,7 @@
 package demo.le.school.dao;
 
+import tykkidream.keel.base.BaseDao;
 import demo.le.school.model.RewardPunish;
-import dream.keel.base.BaseDao;
 
 public interface RewardPunishMapper extends BaseDao<RewardPunish>{
 }

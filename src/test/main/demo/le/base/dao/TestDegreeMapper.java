@@ -8,8 +8,8 @@ import java.util.UUID;
 import org.junit.runners.Parameterized.Parameters;
 
 import demo.le.base.model.Degree;
-import dream.keel.base.BaseDao;
-import dream.keel.test.spring.SpringTestDao;
+import tykkidream.keel.base.BaseDao;
+import tykkidream.keel.test.spring.SpringTestDao;
 
 public class TestDegreeMapper extends SpringTestDao<Degree>{
 	private DegreeMapper baseDao = null;

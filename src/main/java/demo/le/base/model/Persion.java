@@ -8,7 +8,8 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import dream.keel.base.BaseModel;
+import tykkidream.keel.base.BaseModel;
+
 
 /**
  * 人员

@@ -1,6 +1,7 @@
 package demo.le.base.model;
 
-import dream.keel.base.BaseModel;
+import tykkidream.keel.base.BaseModel;
+
 
 /**
  * 专业

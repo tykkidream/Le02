@@ -1,9 +1,9 @@
 package demo.le.base.service.impl;
 
+import tykkidream.keel.base.SimpleService;
 import demo.le.base.model.Degree;
 import demo.le.base.service.DegreeService;
-import dream.keel.base.defaults.BaseServiceImpl;
 
-public class DegreeServiceImpl extends BaseServiceImpl<Degree> implements DegreeService {
+public class DegreeServiceImpl extends SimpleService<Degree> implements DegreeService {
 	
 }

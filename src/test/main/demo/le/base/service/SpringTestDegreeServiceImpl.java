@@ -9,10 +9,10 @@ import javax.annotation.Resource;
 
 import org.junit.runners.Parameterized.Parameters;
 
+import tykkidream.keel.base.BaseService;
+import tykkidream.keel.base.Page;
+import tykkidream.keel.test.spring.SpringTestService;
 import demo.le.base.model.Degree;
-import dream.keel.base.BaseService;
-import dream.keel.base.Page;
-import dream.keel.test.spring.SpringTestService;
 
 public class SpringTestDegreeServiceImpl extends SpringTestService<Degree>{
 

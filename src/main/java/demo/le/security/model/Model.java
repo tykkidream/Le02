@@ -1,6 +1,7 @@
 package demo.le.security.model;
 
-import dream.keel.base.BaseModel;
+import tykkidream.keel.base.BaseModel;
+
 
 public class Model implements BaseModel<Model>{
 	

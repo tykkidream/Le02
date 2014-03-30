@@ -7,8 +7,8 @@ import java.util.UUID;
 
 import org.junit.runners.Parameterized.Parameters;
 
-import dream.keel.base.BaseDao;
-import dream.keel.test.spring.SpringTestDao;
+import tykkidream.keel.base.BaseDao;
+import tykkidream.keel.test.spring.SpringTestDao;
 import demo.le.base.model.Major;
 
 public class TestMajorMapper extends SpringTestDao<Major>{

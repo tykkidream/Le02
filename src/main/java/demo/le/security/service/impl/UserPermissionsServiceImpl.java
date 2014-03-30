@@ -1,9 +1,9 @@
 package demo.le.security.service.impl;
 
+import tykkidream.keel.base.SimpleService;
 import demo.le.security.model.UserPermissions;
 import demo.le.security.service.UserPermissionsService;
-import dream.keel.base.defaults.BaseServiceImpl;
 
-public class UserPermissionsServiceImpl extends BaseServiceImpl<UserPermissions> implements UserPermissionsService {
+public class UserPermissionsServiceImpl extends SimpleService<UserPermissions> implements UserPermissionsService {
 
 }
