@@ -11,6 +11,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import tykkidream.keel.base.BaseService;
 import tykkidream.keel.base.Page;
+import tykkidream.keel.mybatis.interceptor.PageBounds;
 import tykkidream.keel.test.spring.SpringTestService;
 import demo.le.base.model.Degree;
 
@@ -51,9 +52,7 @@ public class SpringTestDegreeServiceImpl extends SpringTestService<Degree>{
     	lt2.add(new Degree(318003L,"EEE","EEE"));
     	lt2.add(new Degree(null,UUID.randomUUID().toString(),UUID.randomUUID().toString()));
     	
-    	Page<Degree> page = new Page<Degree>();
-    	page.setPageIndex(1);
-    	page.setPageSize(3);
+    	Page page = new PageBounds(1,3);
     	
     	Object[][] params = new Object[1][5];    	
     	params[0] = new Object[5];

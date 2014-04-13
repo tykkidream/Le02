@@ -2,6 +2,7 @@ package flow;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import tykkidream.keel.base.BaseModel;
 import tykkidream.keel.base.BaseService;
 import tykkidream.keel.base.Page;
+import tykkidream.keel.mybatis.interceptor.PageBounds;
 
 @Controller
 @RequestMapping("/model")
@@ -100,26 +102,26 @@ public abstract class BaseController<T extends BaseModel<?>> {
 	}
 
 	@RequestMapping(value = "/browse", method = RequestMethod.GET)
-	public ModelAndView browse(@RequestParam(value = "page", required = false) Page<T> page) {
+	public ModelAndView browse(@RequestParam(value = "page", required = false) PageBounds page) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(this.getBaseFoder() + "/browse");
 
-		page = this.getBaseService().queryByPage(page);
+		List<T> list = this.getBaseService().queryByPage(null, page);
 		mav.addObject(page);
-		mav.addObject(page.getResult());
+		mav.addObject(list);
 
 		return mav;
 	}
 
 	@RequestMapping(value = "/manage", method = RequestMethod.GET)
-	public ModelAndView manage(@RequestParam(value = "page", required = false) Page<T> page) {
+	public ModelAndView manage(@RequestParam(value = "page", required = false) Page page) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(this.getBaseFoder() + "/manage");
 
-		page = this.getBaseService().queryByPage(page);
+		List<T> list = this.getBaseService().queryByPage(null, page);
 		mav.addObject(page);
-		mav.addObject(page.getResult());
-
+		mav.addObject(list);
+		
 		return mav;
 	}
 
@@ -132,7 +134,7 @@ public abstract class BaseController<T extends BaseModel<?>> {
 			mav.addObject("data", t);
 			mav.setViewName(this.getBaseFoder() + "/detailView");
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 		return mav;
