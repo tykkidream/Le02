@@ -1,6 +1,6 @@
 package demo.le.school.service.impl;
 
-import tykkidream.keel.base.SimpleService;
+import tykkidream.keel.mybatis.SimpleService;
 import demo.le.school.model.School;
 import demo.le.school.service.SchoolService;
 

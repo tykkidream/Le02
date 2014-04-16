@@ -14,7 +14,7 @@
 			<th>Manage</th>
 		</tr>
 		<tbody>
-		<c:forEach var="item" items="${page.result }">
+		<c:forEach var="item" items="${degreeList}">
 		<tr>
 			<td><c:out value="${item.id }" /></td>
 			<td><c:out value="${item.code }" /></td>

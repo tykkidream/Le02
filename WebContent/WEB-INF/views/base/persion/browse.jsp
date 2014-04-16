@@ -17,7 +17,7 @@
 			<th>Manager</th>
 		</tr>
 		<tbody>
-		<c:forEach var="item" items="${page.result }">
+		<c:forEach var="item" items="${persionList }">
 		<tr>
 			<td>${item.id }&nbsp;</td>
 			<td>${item.code }&nbsp;</td>

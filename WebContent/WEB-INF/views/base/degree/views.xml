@@ -10,11 +10,11 @@
 	<definition name="base/degree/home" extends="base/degree/main">
 		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/home.jsp" cascade="true"/>
 	</definition>
-	<definition name="base/degree/browse" extends="base/persion/main">
-		<put-attribute name="degreeBody" value="/WEB-INF/views/base/persion/browse.jsp" cascade="true"/>
+	<definition name="base/degree/browse" extends="base/degree/main">
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/browse.jsp" cascade="true"/>
 	</definition>
-	<definition name="base/degree/manage" extends="base/persion/main">
-		<put-attribute name="degreeBody" value="/WEB-INF/views/base/persion/manage.jsp" cascade="true"/>
+	<definition name="base/degree/manage" extends="base/degree/main">
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/manage.jsp" cascade="true"/>
 	</definition>
 	<definition name="base/degree/view" extends="base/degree/main">
 		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/view.jsp" cascade="true"/>

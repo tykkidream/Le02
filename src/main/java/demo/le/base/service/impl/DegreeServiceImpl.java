@@ -1,6 +1,6 @@
 package demo.le.base.service.impl;
 
-import tykkidream.keel.base.SimpleService;
+import tykkidream.keel.mybatis.SimpleService;
 import demo.le.base.model.Degree;
 import demo.le.base.service.DegreeService;
 
