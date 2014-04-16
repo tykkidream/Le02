@@ -19,4 +19,5 @@ public class DegreeController extends SimpleController<Degree>{
 	public void setDegreeService(DegreeService service) {
 		super.setBaseService(service);
 	}
+	
 }
