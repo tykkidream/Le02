@@ -9,8 +9,7 @@ public class UserServiceImpl  extends SimpleService<User, UserMapper> implements
 
 	@Override
 	public User queryByUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return getBaseDao().selectByUsername(username);
 	}
 
 }

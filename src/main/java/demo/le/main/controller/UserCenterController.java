@@ -26,17 +26,26 @@ public class UserCenterController {
 		this.userService = userService;
 	}
 	
+	@RequestMapping(value = { "/login" },  method = {RequestMethod.GET })
+	public String login(){
+		return "login";
+	}
+	
 	@RequestMapping(value = { "/login" },  method = {RequestMethod.POST })
-	public ModelAndView login(@RequestParam("id") String username, @RequestParam("id") String password, HttpSession session){
+	public ModelAndView login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session){
 		ModelAndView mav = new ModelAndView();
+		mav.setViewName("login");
 		
-		User user = getUserService().queryByKey(username);
-		
-		if (user != null && user.getPassword().equals(username)) {
-			mav.setViewName("login");
-			session.setAttribute("user", user);
+		if (username != null && username.trim().length() > 3) {
+			User user = getUserService().queryByUsername(username);
+
+			if (user != null && user.getPassword().equals(username)) {
+				mav.setViewName("login");
+				mav.addObject("user", user);
+				session.setAttribute("user", user);
+			}
 		} else {
-			mav.setViewName("login");
+			mav.addObject("username", username);
 		}
 		
 		return mav;

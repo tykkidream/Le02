@@ -34,11 +34,17 @@
 		CODE
 	</sql>
 
-	<select id="select" resultMap="BaseResultMap" parameterType="long">
+	<select id="selectByKey" resultMap="BaseResultMap" parameterType="long">
 		select
 		<include refid="Base_Column_List" />
 		from BASE_USER
 		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<select id="selectByUsername" resultMap="BaseResultMap" parameterType="string">
+		select
+		<include refid="Base_Column_List" />
+		from BASE_USER
+		where USERNAME = #{username, jdbcType=CHAR}
 	</select>
 	<select id="selectByArray" resultMap="BaseResultMap">
 		select

@@ -34,4 +34,5 @@
 
 	<bean id="persionServiceImpl" class="demo.le.base.service.impl.PersionServiceImpl" p:baseDao-ref="persionMapper"/>
 
+	<bean id="userServiceImpl" class="demo.le.base.service.impl.UserServiceImpl" p:baseDao-ref="userMapper"/>
 </beans>
