@@ -14,4 +14,20 @@
 	<definition name="home" extends="main">
 		<put-attribute name="body" value="/WEB-INF/views/main/home.jsp" />
 	</definition>
+	
+	<definition name="login" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/main/login.jsp" />
+	</definition>
+	
+	<definition name="logout" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/main/logout.jsp" />
+	</definition>
+	
+	<definition name="usserCenter" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/main/usserCenter.jsp" />
+	</definition>
+	
+	<definition name="usserHome" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/main/usserHome.jsp" />
+	</definition>
 </tiles-definitions>
