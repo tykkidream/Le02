@@ -10,6 +10,8 @@ public class UserPermissions  implements BaseModel<UserPermissions>{
     private Long userId;
 
     private Long permissionsId;
+    
+    private Permissions permissions;
 
     private String value;
 
@@ -37,12 +39,24 @@ public class UserPermissions  implements BaseModel<UserPermissions>{
         this.permissionsId = permissionsId;
     }
 
+	public Permissions getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(Permissions permissions) {
+		this.permissions = permissions;
+	}
+
     public String getValue() {
         return value;
     }
 
     public void setValue(String value) {
-        this.value = value;
+    	if (null != value) {
+			this.value = value.trim();
+		} else {
+	        this.value = value;
+		}
     }
 
 	@Override
@@ -53,4 +67,5 @@ public class UserPermissions  implements BaseModel<UserPermissions>{
 	@Override
 	public void setName(String arg0) {
 	}
+
 }

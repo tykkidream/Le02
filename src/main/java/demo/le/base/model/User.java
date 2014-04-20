@@ -67,6 +67,8 @@ public class User implements BaseModel<User>{
     public void setUsername(String username) {
     	if (null != username) {
             this.username = username.trim();
+		} else {
+	    	this.username = username;
 		}
     }
 
@@ -85,6 +87,8 @@ public class User implements BaseModel<User>{
     public void setNickname(String nickname) {
     	if (null != nickname) {
             this.nickname = nickname.trim();
+		} else {
+	    	this.nickname = nickname;
 		}
     }
 
@@ -101,8 +105,10 @@ public class User implements BaseModel<User>{
      * @param password
      */
     public void setPassword(String password) {
-    	if (null != nickname) {
+    	if (null != password) {
             this.password = password.trim();
+		} else {
+	    	this.password = password;
 		}
     }
 

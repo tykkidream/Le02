@@ -15,5 +15,7 @@
 	
 	<import resource="demo/le/base/applicationContext.xml"/>
 	<import resource="demo/le/school/applicationContext.xml"/>
+	<import resource="demo/le/security/applicationContext.xml"/>
+	<import resource="demo/le/main/applicationContext.xml"/>
 	
 </beans>

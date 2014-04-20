@@ -44,7 +44,7 @@
 		select
 		<include refid="Base_Column_List" />
 		from BASE_USER
-		where USERNAME = #{username,jdbcType=CHAR}
+		where Trim(USERNAME) = #{username}
 	</select>
 	<select id="selectByArray" resultMap="BaseResultMap">
 		select

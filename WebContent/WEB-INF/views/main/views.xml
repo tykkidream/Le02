@@ -23,8 +23,8 @@
 		<put-attribute name="body" value="/WEB-INF/views/main/logout.jsp" />
 	</definition>
 	
-	<definition name="usserCenter" extends="main">
-		<put-attribute name="body" value="/WEB-INF/views/main/usserCenter.jsp" />
+	<definition name="userCenter" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/main/userCenter.jsp" />
 	</definition>
 	
 	<definition name="usserHome" extends="main">

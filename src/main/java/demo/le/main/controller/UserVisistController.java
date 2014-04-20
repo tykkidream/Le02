@@ -4,26 +4,27 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import demo.le.base.model.User;
-import demo.le.base.service.UserService;
+import demo.le.main.business.UserBusiness;
 
 @Controller
 @RequestMapping("/")
-public class UserCenterController {
-	private UserService userService;
+public class UserVisistController {
+	private UserBusiness userManager;
 
-	public UserService getUserService() {
-		return userService;
+	public UserBusiness getUserBusiness() {
+		return userManager;
 	}
 
 	@Autowired
-	public void setUserService(UserService userService) {
-		this.userService = userService;
+	public void setUserBusiness(UserBusiness userManager) {
+		this.userManager = userManager;
 	}
 	
 	@RequestMapping(value = { "/login" },  method = {RequestMethod.GET })
@@ -34,18 +35,21 @@ public class UserCenterController {
 	@RequestMapping(value = { "/login" },  method = {RequestMethod.POST })
 	public ModelAndView login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session){
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("login");
 		
-		if (username != null && username.trim().length() > 3) {
-			User user = getUserService().queryByUsername(username);
-
-			if (user != null && user.getPassword().equals(username)) {
-				mav.setViewName("login");
-				mav.addObject("user", user);
+		try {
+			User user = getUserBusiness().login(username, password);
+			
+			if (user != null) {
+				mav.setViewName("redirect:" + user.getUsername());
 				session.setAttribute("user", user);
+			} else {
+				mav.setViewName("login");
+				mav.addObject("username", username);
 			}
-		} else {
+		} catch (Exception e) {
+			mav.setViewName("login");
 			mav.addObject("username", username);
+			System.out.println(e.getMessage());
 		}
 		
 		return mav;
@@ -69,8 +73,8 @@ public class UserCenterController {
 		return mav;
 	}
 	
-	@RequestMapping(value = { "/{username}" },  method = { RequestMethod.GET })
-	public ModelAndView userCenter(@RequestParam("username") String username){
+	@RequestMapping(value = { "/u/{username}" },  method = { RequestMethod.GET })
+	public ModelAndView userCenter(@PathVariable("username") String username){
 		ModelAndView mav = new ModelAndView();
 
 		mav.setViewName("userCenter");
@@ -78,12 +82,13 @@ public class UserCenterController {
 		return mav;
 	}
 	
-	@RequestMapping(value = {"/{username}/home"},  method = { RequestMethod.GET })
-	public ModelAndView userHome(@RequestParam("username") String username){
+	@RequestMapping(value = {"/u/home"},  method = { RequestMethod.GET })
+	public ModelAndView userHome(){
 		ModelAndView mav = new ModelAndView();
 
 		mav.setViewName("userCenter");
 		
 		return mav;
 	}
+
 }

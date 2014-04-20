@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="demo.le.security.dao.UserPermissionsMapper">
+
 	<resultMap id="_base_result_map" type="UserPermissions">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+		<result column="PERMISSIONS_ID" property="permissionsId" jdbcType="DECIMAL" />
+		<result column="VALUE" property="value" jdbcType="CHAR" />
+		<!-- <association column="PERMISSIONS_ID" property="permissions" select="demo.le.security.dao.PermissionsMapper.selectByKey" /> -->
+	</resultMap>
+	<resultMap id="_full_result_map" type="UserPermissions">
 		<id column="ID" property="id" jdbcType="DECIMAL" />
 		<result column="USER_ID" property="userId" jdbcType="DECIMAL" />
 		<result column="PERMISSIONS_ID" property="permissionsId" jdbcType="DECIMAL" />
@@ -20,12 +28,28 @@
 	<sql id="_base_sql_parameters">
 		
 	</sql>
+	<sql id="_full_column_list">
+		A.ID  as A_ID
+		, A.USER_ID as A_USER_ID
+		, A.PERMISSIONS_ID as A_PERMISSIONS_ID
+		, A.VALUE as A_VALUE
+	</sql>
+	<sql id="_full_column_list_permissions">
+		B.ID as B_ID
+		, B.NAME as B_NAME
+		, B.DESCRIBE as B_DESCRIBE
+		, B.EXECUTIVE_PROGRAM as B_EXECUTIVE_PROGRAM
+	</sql>
 	
-	<select id="selectByKey" resultMap="_base_result_Map" parameterType="Long">
+	<select id="selectByKey" resultMap="_base_result_map" parameterType="long">
 		<include refid="_base_sql_select"/>
 		where ID = #{id,jdbcType=DECIMAL}
 	</select>
-	<select id="selectByArray" resultMap="_base_result_Map" parameterType="Array">
+	<select id="selectByUserId" resultMap="_base_result_map" parameterType="long">
+		<include refid="_base_sql_select"/>
+		where USER_ID = #{userID,jdbcType=DECIMAL}
+	</select>
+	<select id="selectByArray" resultMap="_base_result_map">
 		<include refid="_base_sql_select"/>
 		<where>
 			<if test="array != null and array.length &gt; 0 ">
@@ -35,7 +59,7 @@
 			</if>
 		</where>
 	</select>
-	<select id="selectByList" resultMap="_base_result_Map" parameterType="List">
+	<select id="selectByList" resultMap="_base_result_map">
 		<include refid="_base_sql_select"/>
 		<where>
 			<if test ="list != null and list.size &gt; 0">
@@ -45,17 +69,27 @@
 			</if>
 		</where>
 	</select>
-	<select id="selectByParameters" resultMap="_base_result_Map" parameterType="Map">
+	<select id="selectByParameters" resultMap="_base_result_map">
 		<include refid="_base_sql_select"/>
 		<where>
 		
 		</where>
 	</select>
+	<select id="selectFullByParameters" resultMap="_full_result_map">
+		select <include refid="_full_column_list" />,<include refid="_full_column_list_permissions"/>
+		from SECURITY_USER_PERMISSIONS A,SECURITY_PERMISSION B
+		<where>
+			A.PERMISSIONS_ID = B.ID
+			and A.USER_ID = #{user.userId,jdbcType=DECIMAL}
+		
+		</where>
+	</select>
+	
 	
 	<delete id="delete" parameterType="UserPermissions">
 		<include refid="_base_sql_delete"/> where ID = #{id,jdbcType=DECIMAL}
 	</delete>
-	<delete id="deleteByKey" parameterType="Long">
+	<delete id="deleteByKey" parameterType="long">
 		<include refid="_base_sql_delete"/> where ID = #{id,jdbcType=DECIMAL}
 	</delete>
 	
