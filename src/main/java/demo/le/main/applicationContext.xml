@@ -7,7 +7,8 @@
 
 	<bean id="visitBusiness" class="demo.le.main.business.VisitBusiness" p:userService-ref="userServiceImpl" />
 
-	<bean id="visitSecurity" class="demo.le.main.security.VisitSecurity" p:usserPermissionService-ref="userPermissionsServiceImpl" />
+	<bean id="visitSecurity" class="demo.le.main.security.VisistSecurity" p:usserPermissionService-ref="userPermissionsServiceImpl" />
+
 	<aop:config>
 		<aop:aspect ref="visitSecurity">
 			<aop:pointcut expression="execution(* demo.le.main.business.VisistBusiness.login(..))" id="apbark"/>

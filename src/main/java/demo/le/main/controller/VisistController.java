@@ -40,7 +40,7 @@ public class VisistController {
 			
 			if (user != null) {
 				mav.setViewName("redirect:" + user.getUsername());
-				session.setAttribute("user", user);
+				session.setAttribute("profile", user);
 			} else {
 				mav.setViewName("login");
 				mav.addObject("username", username);
