@@ -45,6 +45,22 @@ public class UHomeController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value = { "/home" },  method = { RequestMethod.GET })
+	public ModelAndView home(HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		
+		Object profile = session.getAttribute("profile");		
+		if(null != profile && profile instanceof User) {
+			User user = (User)profile;
+			mav.setViewName("u/home");
+			mav.addObject("user",user);
+		} else {
+			mav.setViewName("redirect:/login");
+		}
+		
+		return mav;
+	}
 
 
 }

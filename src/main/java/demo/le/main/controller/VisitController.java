@@ -14,7 +14,7 @@ import demo.le.main.business.VisitBusiness;
 
 @Controller
 @RequestMapping("/")
-public class VisistController {
+public class VisitController {
 	private VisitBusiness userManager;
 
 	public VisitBusiness getVisitBusiness() {
@@ -39,7 +39,7 @@ public class VisistController {
 			User user = getVisitBusiness().login(username, password);
 			
 			if (user != null) {
-				mav.setViewName("redirect:" + user.getUsername());
+				mav.setViewName("redirect:/u/" + user.getUsername());
 				session.setAttribute("profile", user);
 			} else {
 				mav.setViewName("login");

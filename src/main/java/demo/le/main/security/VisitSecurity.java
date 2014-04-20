@@ -11,7 +11,7 @@ import demo.le.security.exception.InsufficientPermissions;
 import demo.le.security.model.UserPermissions;
 import demo.le.security.service.UserPermissionsService;
 
-public class VisistSecurity {
+public class VisitSecurity {
 	private UserPermissionsService usserPermissionService;
 
 	public UserPermissionsService getUsserPermissionService() {
