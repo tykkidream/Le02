@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
-public class CenterController {
+public class UCenterController {
 
 
 	@RequestMapping(value = {"/u/center"},  method = { RequestMethod.GET })
