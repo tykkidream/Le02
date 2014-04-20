@@ -3,7 +3,7 @@ package demo.le.main.business;
 import demo.le.base.model.User;
 import demo.le.base.service.UserService;
 
-public class UserBusiness {
+public class VisitBusiness {
 	private UserService userService;
 
 	public UserService getUserService() {

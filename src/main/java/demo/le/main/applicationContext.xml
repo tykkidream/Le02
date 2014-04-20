@@ -4,14 +4,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<bean id="userBusiness" class="demo.le.main.business.UserBusiness" p:userService-ref="userServiceImpl" />
 
-	<bean id="userSecurity" class="demo.le.main.security.UserSecurity" p:usserPermissionService-ref="userPermissionsServiceImpl" />
+	<bean id="visitBusiness" class="demo.le.main.business.VisitBusiness" p:userService-ref="userServiceImpl" />
+
+	<bean id="visitSecurity" class="demo.le.main.security.VisitSecurity" p:usserPermissionService-ref="userPermissionsServiceImpl" />
 	<aop:config>
-		<aop:aspect ref="userSecurity">
-			<aop:pointcut expression="execution(* demo.le.main.business.UserBusiness.login(..))" id="apbark"/>
+		<aop:aspect ref="visitSecurity">
+			<aop:pointcut expression="execution(* demo.le.main.business.VisistBusiness.login(..))" id="apbark"/>
 			
 			<aop:after-returning method="loginReturning" arg-names="user" returning="user" pointcut-ref="apbark"/>
 		</aop:aspect>
 	</aop:config>
+
 </beans>
