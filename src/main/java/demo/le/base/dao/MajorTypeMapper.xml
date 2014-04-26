@@ -12,7 +12,7 @@
 		ID, CODE, NAME, STATUS
 	</sql>
 	
-	<select id="select" resultMap="BaseResultMap" parameterType="long">
+	<select id="selectByKey" resultMap="BaseResultMap" parameterType="long">
 		select
 		<include refid="Base_Column_List" />
 		from BASE_MAJOR_TYPE

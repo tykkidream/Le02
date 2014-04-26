@@ -5,22 +5,23 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
-	<h2>${degree.name }的详细信息</h2>
+	<h3><a href="../../">首页</a>&nbsp;&nbsp;<a href="../browse">学位管理</a>&nbsp;&nbsp;${data.name }</h3>
+	<h4>${data.name }的详细信息</h4>
 	<table border="1" width="100%">
 		<tr>
 			<td>ID</td>
-			<td>${degree.id }</td>
+			<td>${data.id }</td>
 		</tr>
 		<tr>
 			<td>编码</td>
-			<td>${degree.code }</td>
+			<td>${data.code }</td>
 		</tr>
 		<tr>
 			<td>名称</td>
-			<td>${degree.name }</td>
+			<td>${data.name }</td>
 		</tr>
 		<tr>
-			<td colspan="2"><a href="grid">返回</a></td>
+			<td colspan="2"><a href="../browse">返回</a></td>
 		</tr>
 	</table>
 </div>

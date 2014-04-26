@@ -5,6 +5,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
+	<h3><a href="../">首页</a>&nbsp;&nbsp;学位管理</h3>
 	<ul>
 		<li><a href="browse">浏览所有的学位</a></li>
 		<li><a href="manage">管理所有的学位</a></li>
