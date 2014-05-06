@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="base/persion/main" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/base/persion/main.jsp" />
+	</definition>
+	
+	<definition name="base/persion/home" extends="base/persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/home.jsp" cascade="true"/>
+	</definition>
+	<definition name="base/persion/browse" extends="base/persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/browse.jsp" cascade="true"/>
+	</definition>
+	<definition name="base/persion/manage" extends="base/persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/manage.jsp" cascade="true"/>
+	</definition>
+	<definition name="base/persion/view" extends="base/persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/view.jsp" cascade="true"/>
+	</definition>
+	<definition name="base/persion/edit" extends="base/persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/edit.jsp" cascade="true"/>
+	</definition>
+	<definition name="base/persion/new" extends="base/persion/main">
+		<put-attribute name="persionBody" value="/WEB-INF/views/base/persion/edit.jsp" cascade="true"/>
+	</definition>
+</tiles-definitions>

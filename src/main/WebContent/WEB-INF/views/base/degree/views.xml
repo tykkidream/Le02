@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="base/degree/main" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/base/degree/main.jsp" />
+	</definition>
+	
+	<definition name="base/degree/home" extends="base/degree/main">
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/home.jsp" cascade="true"/>
+	</definition>
+	<definition name="base/degree/browse" extends="base/degree/main">
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/browse.jsp" cascade="true"/>
+	</definition>
+	<definition name="base/degree/manage" extends="base/degree/main">
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/manage.jsp" cascade="true"/>
+	</definition>
+	<definition name="base/degree/view" extends="base/degree/main">
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/view.jsp" cascade="true"/>
+	</definition>
+	<definition name="base/degree/edit" extends="base/degree/main">
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/edit.jsp" cascade="true"/>
+	</definition>
+	<definition name="base/degree/new" extends="base/degree/main">
+		<put-attribute name="degreeBody" value="/WEB-INF/views/base/degree/edit.jsp" cascade="true"/>
+	</definition>
+</tiles-definitions>
