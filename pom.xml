@@ -33,6 +33,16 @@
 			<artifactId>spring-tx</artifactId>
 			<version>3.2.8.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>3.2.8.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>3.2.8.RELEASE</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -55,6 +65,18 @@
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache</artifactId>
 			<version>2.8.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.servicemix.activiti</groupId>
+			<artifactId>org.apache.servicemix.activiti.config</artifactId>
+			<version>5.0.0</version>
 		</dependency>
 
 		<dependency>
