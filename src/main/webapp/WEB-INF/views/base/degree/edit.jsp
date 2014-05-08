@@ -6,8 +6,8 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
-	<h3><a href="../">首页</a>&nbsp;&nbsp;<a href="./">学位管理</a>&nbsp;&nbsp;编辑学位</h3>
-	<sf:form action="save" method="POST" modelAttribute="degree">
+	<h3><a href="/Le02">首页</a>&nbsp;&nbsp;<a href="/Le02/base/degree/">学位管理</a>&nbsp;&nbsp;编辑学位</h3>
+	<sf:form method="POST" modelAttribute="data">
 		<table>
 			<tr>
 				<td>ID</td>

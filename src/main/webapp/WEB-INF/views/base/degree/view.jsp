@@ -5,7 +5,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
-	<h3><a href="../../">首页</a>&nbsp;&nbsp;<a href="../browse">学位管理</a>&nbsp;&nbsp;${data.name }</h3>
+	<h3><a href="/Le02">首页</a>&nbsp;&nbsp;<a href="/Le02/base/degree/">学位管理</a>&nbsp;&nbsp;${data.name }</h3>
 	<h4>${data.name }的详细信息</h4>
 	<table border="1" width="100%">
 		<tr>

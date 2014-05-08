@@ -9,7 +9,7 @@ import demo.le.base.model.Degree;
 import demo.le.base.service.DegreeService;
 
 @Controller
-@RequestMapping("/degree")
+@RequestMapping("base/degree")
 public class DegreeController extends SimpleController<Degree>{
 	public DegreeController() {
 		setBasepath("base/degree");

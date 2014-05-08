@@ -5,7 +5,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <div>
-	<h3><a href="../">首页</a>&nbsp;&nbsp;<a href="./">学位管理</a>&nbsp;&nbsp;浏览所有的学位</h3>
+	<h3><a href="/Le02">首页</a>&nbsp;&nbsp;<a href="./">学位管理</a>&nbsp;&nbsp;管理所有的学位</h3>
 	<table border="1" width="100%">
 		<tr>
 			<th>ID</th>
@@ -14,12 +14,15 @@
 			<th>Manage</th>
 		</tr>
 		<tbody>
-		<c:forEach var="item" items="${page.result }">
+		<c:forEach var="item" items="${degreeList }">
 		<tr>
 			<td><c:out value="${item.id }" /></td>
 			<td><c:out value="${item.code }" /></td>
 			<td><c:out value="${item.name }" /></td>
-			<td><s:url var="manage_view" value="/degrees/detail?id=${item.id }" /><a href="${manage_view }">查看</a></td>
+			<td>
+				<s:url var="manage_view" value="${item.id }/detail" /><a href="${manage_view }">查看</a>
+				<s:url var="manage_edit" value="${item.id }/edit" /><a href="${manage_edit }">编辑</a>
+			</td>
 		</tr>
 		</c:forEach>
 		</tbody>

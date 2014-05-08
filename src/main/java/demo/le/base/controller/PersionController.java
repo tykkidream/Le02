@@ -9,7 +9,7 @@ import demo.le.base.service.PersionService;
 import tykkidream.keel.spring.SimpleController;
 
 @Controller
-@RequestMapping("/persion")
+@RequestMapping("base/persion")
 public class PersionController extends SimpleController<Persion> {
 	public PersionController() {
 		setBasepath("base/persion");
