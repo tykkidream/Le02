@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.school.dao.GradeMapper">
+	<resultMap id="BaseResultMap" type="Grade">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="CODE" property="code" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="CHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, CODE, NAME
+	</sql>
+	
+	<select id="select" resultMap="BaseResultMap" parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from SCHOOL_GRADE
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<delete id="delete" parameterType="long">
+		delete from SCHOOL_GRADE
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="Grade">
+		insert into SCHOOL_GRADE (
+			<include refid="Base_Column_List" />
+		) values (
+			#{id,jdbcType=DECIMAL},
+			#{code,jdbcType=VARCHAR},
+			#{name,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="Grade">
+		<selectKey keyProperty="id" order="BEFORE" resultType="long">
+			select SEQ_GRADE_ID.nextval from dual
+		</selectKey>
+		insert into SCHOOL_GRADE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="code != null">
+				CODE,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateSelective" parameterType="Grade">
+		update SCHOOL_GRADE
+		<set>
+			<if test="code != null">
+				CODE = #{code,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				NAME = #{name,jdbcType=CHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="update" parameterType="Grade">
+		update SCHOOL_GRADE
+		set
+			CODE = #{code,jdbcType=VARCHAR},
+			NAME = #{name,jdbcType=CHAR}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+</mapper>

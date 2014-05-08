@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.security.dao.StrategyMapper">
+	<resultMap id="_base_result_map" type="Strategy">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="NAME" property="name" jdbcType="CHAR" />
+		<result column="DESCRIBE" property="describe" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="_base_column_list">
+		ID, NAME, DESCRIBE
+	</sql>
+	<sql id="_base_sql_delete">
+		delete from SECURITY_STRATEGY
+	</sql>
+	<sql id="_base_sql_select">
+		select <include refid="_base_column_list" /> from SECURITY_STRATEGY
+	</sql>
+	<sql id="_base_sql_parameters">
+		
+	</sql>
+	
+	<select id="selectByKey" resultMap="_base_result_Map" parameterType="Long">
+		<include refid="_base_sql_select"/>
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<select id="selectByArray" resultMap="_base_result_Map" parameterType="Array">
+		<include refid="_base_sql_select"/>
+		<where>
+			<if test="array != null and array.length &gt; 0 ">
+				ID in <foreach collection="array" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByList" resultMap="_base_result_Map" parameterType="List">
+		<include refid="_base_sql_select"/>
+		<where>
+			<if test ="list != null and list.size &gt; 0">
+				ID in <foreach collection="list" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item.id, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByParameters" resultMap="_base_result_Map" parameterType="Map">
+		<include refid="_base_sql_select"/>
+		<where>
+		
+		</where>
+	</select>
+	
+	<delete id="delete" parameterType="Strategy">
+		<include refid="_base_sql_delete"/> where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<delete id="deleteByKey" parameterType="Long">
+		<include refid="_base_sql_delete"/> where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	
+	<insert id="insert" parameterType="Strategy">
+		insert into SECURITY_STRATEGY (<include refid="_base_column_list" />)
+		values (
+			#{id,jdbcType=DECIMAL},
+			#{name,jdbcType=CHAR},
+			#{describe,jdbcType=VARCHAR)
+	</insert>
+	<insert id="insertSelective" parameterType="Strategy">
+		insert into SECURITY_STRATEGY
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="describe != null">
+				DESCRIBE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=CHAR},
+			</if>
+			<if test="describe != null">
+				#{describe,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="update" parameterType="Strategy">
+		update SECURITY_STRATEGY
+		set
+			NAME = #{name,jdbcType=CHAR},
+			DESCRIBE = #{describe,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="updateSelective" parameterType="Strategy">
+		update SECURITY_STRATEGY
+		<set>
+			<if test="name != null">
+				NAME = #{name,jdbcType=CHAR},
+			</if>
+			<if test="describe != null">
+				DESCRIBE = #{describe,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	
+</mapper>

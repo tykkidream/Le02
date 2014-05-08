@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.school.dao.StudentMapper">
+	<resultMap id="BaseResultMap" type="Student">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="STUDENT_NUM" property="studentNum" jdbcType="CHAR" />
+		<result column="CLASSES_ID" property="classesId" jdbcType="DECIMAL" />
+		<result column="POST_NUM" property="postNum" jdbcType="DECIMAL" />
+		<result column="CODE" property="code" jdbcType="CHAR" />
+		<result column="INTO_SCHOOL_DATE" property="intoSchoolDate" jdbcType="TIMESTAMP" />
+		<result column="ARCHIVES_ID" property="archivesId" jdbcType="DECIMAL" />
+		<result column="SCHOOL_ROLL_STATUS" property="schoolRollStatus" jdbcType="DECIMAL" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID,
+		STUDENT_NUM,
+		POST_NUM,
+		CODE,
+		INTO_SCHOOL_DATE,
+		CLASSES_ID,
+		ARCHIVES_ID,
+		SCHOOL_ROLL_STATUS
+	</sql>
+	
+	<select id="select" resultMap="BaseResultMap" parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from SCHOOL_STUDENT
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<delete id="delete" parameterType="long">
+		delete from SCHOOL_STUDENT
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="Student">
+		insert into SCHOOL_STUDENT (
+			<include refid="Base_Column_List" />
+		) values (
+			#{id,jdbcType=DECIMAL},
+			#{studentNum,jdbcType=CHAR},
+			#{postNum,jdbcType=DECIMAL},
+			#{code,jdbcType=CHAR},
+			#{intoSchoolDate,jdbcType=TIMESTAMP},
+			#{classesId,jdbcType=DECIMAL},
+			#{archivesId,jdbcType=DECIMAL},
+			#{schoolRollStatus,jdbcType=DECIMAL})
+	</insert>
+	<insert id="insertSelective" parameterType="Student">
+		<selectKey keyProperty="id" order="BEFORE" resultType="long">
+			select SEQ_STUDENT_ID.nextval from dual
+		</selectKey>
+		insert into SCHOOL_STUDENT
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="studentNum != null">
+				STUDENT_NUM,
+			</if>
+			<if test="postNum != null">
+				POST_NUM,
+			</if>
+			<if test="code != null">
+				CODE,
+			</if>
+			<if test="intoSchoolDate != null">
+				INTO_SCHOOL_DATE,
+			</if>
+			<if test="classesId != null">
+				CLASSES_ID,
+			</if>
+			<if test="archivesId != null">
+				ARCHIVES_ID,
+			</if>
+			<if test="schoolRollStatus != null">
+				SCHOOL_ROLL_STATUS
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="studentNum != null">
+				#{studentNum,jdbcType=CHAR},
+			</if>
+			<if test="postNum != null">
+				#{postNum,jdbcType=DECIMAL},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=CHAR},
+			</if>
+			<if test="intoSchoolDate != null">
+				#{intoSchoolDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="classesId != null">
+				#{classesId,jdbcType=DECIMAL},
+			</if>
+			<if test="archivesId != null">
+				#{archivesId,jdbcType=DECIMAL},
+			</if>
+			<if test="schoolRollStatus != null">
+				#{schoolRollStatus,jdbcType=DECIMAL}
+			</if>
+		</trim>
+	</insert>
+	<update id="updateSelective" parameterType="Student">
+		update SCHOOL_STUDENT
+		<set>
+			<if test="studentNum != null">
+				STUDENT_NUM = #{studentNum,jdbcType=CHAR},
+			</if>
+			<if test="postNum != null">
+				POST_NUM = #{postNum,jdbcType=DECIMAL},
+			</if>
+			<if test="code != null">
+				CODE = #{code,jdbcType=CHAR},
+			</if>
+			<if test="intoSchoolDate != null">
+				INTO_SCHOOL_DATE = #{intoSchoolDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="classesId != null">
+				CLASSES_ID = #{classesId,jdbcType=DECIMAL},
+			</if>
+			<if test="archivesId != null">
+				ARCHIVES_ID = #{archivesId,jdbcType=DECIMAL},
+			</if>
+			<if test="schoolRollStatus != null">
+				SCHOOL_ROLL_STATUS = #{schoolRollStatus,jdbcType=DECIMAL}
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="update" parameterType="Student">
+		update SCHOOL_STUDENT
+		set
+			STUDENT_NUM = #{studentNum,jdbcType=CHAR},
+			POST_NUM = #{postNum,jdbcType=DECIMAL},
+			CODE = #{code,jdbcType=CHAR},
+			INTO_SCHOOL_DATE = #{intoSchoolDate,jdbcType=TIMESTAMP},
+			CLASSES_ID = #{classesId,jdbcType=DECIMAL},
+			ARCHIVES_ID = #{archivesId,jdbcType=DECIMAL},
+			SCHOOL_ROLL_STATUS = #{schoolRollStatus,jdbcType=DECIMAL}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+</mapper>

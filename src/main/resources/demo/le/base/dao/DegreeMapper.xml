@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.base.dao.DegreeMapper">
+	<resultMap id="BaseResultMap" type="Degree">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="CODE" property="code" jdbcType="CHAR" />
+		<result column="NAME" property="name" jdbcType="CHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, CODE, NAME
+	</sql>
+	
+	<select id="selectByKey" resultMap="BaseResultMap" parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from BASE_DEGREE
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<select id="selectByArray" resultMap="BaseResultMap" parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from BASE_DEGREE
+		<where>
+			<if test="array != null and array.length &gt; 0 ">
+				ID in <foreach collection="array" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByList" resultMap="BaseResultMap" parameterType="list">
+		select
+		<include refid="Base_Column_List" />
+		from BASE_DEGREE
+		<where>
+			<if test ="list != null">
+				ID in <foreach collection="list" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item.id, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByParameters" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from BASE_DEGREE
+		<where>
+		
+		</where>
+	</select>
+	<delete id="delete" parameterType="long">
+		delete from BASE_DEGREE
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="Degree">
+		insert into BASE_DEGREE (
+			ID,
+			CODE,
+			NAME
+		) values (
+			#{id,jdbcType=DECIMAL},
+			#{code,jdbcType=CHAR},
+			#{name,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="Degree">
+		<selectKey keyProperty="id" order="BEFORE" resultType="long">
+			select SEQ_DEGREE_ID.nextval from dual
+		</selectKey>
+		insert into BASE_DEGREE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="code != null">
+				CODE,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=CHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="Degree">
+		update BASE_DEGREE
+		set
+			CODE = #{code,jdbcType=CHAR},
+			NAME = #{name,jdbcType=CHAR}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="updateSelective" parameterType="Degree">
+		update BASE_DEGREE
+		<set>
+			<if test="code != null">
+				CODE = #{code,jdbcType=CHAR},
+			</if>
+			<if test="name != null">
+				NAME = #{name,jdbcType=CHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	
+</mapper>

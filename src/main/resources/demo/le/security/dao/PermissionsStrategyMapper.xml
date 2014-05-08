@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.security.dao.PermissionsStrategyMapper">
+	<resultMap id="_base_result_map" type="PermissionsStrategy">
+		<id column="PERMISSIONS_ID" property="permissionsId" jdbcType="DECIMAL" />
+		<id column="STRATEGY_ID" property="strategyId" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="_base_column_list">
+		PERMISSIONS_ID, STRATEGY_ID
+	</sql>
+	<sql id="_base_sql_delete">
+		delete from SECURITY_PERMISSIONS_STRATEGY
+	</sql>
+	<sql id="_base_sql_select">
+		select <include refid="_base_column_list" /> from SECURITY_PERMISSIONS_STRATEGY
+	</sql>
+	
+	<select id="selectByKey" resultMap="_base_result_Map" parameterType="Long">
+		<include refid="_base_sql_select"/>
+		where PERMISSIONS_ID = #{permissionsId,jdbcType=DECIMAL}
+	</select>
+	<select id="selectByArray" resultMap="_base_result_Map" parameterType="Array">
+		<include refid="_base_sql_select"/>
+		<where>
+			<if test="array != null and array.length &gt; 0 ">
+				PERMISSIONS_ID in <foreach collection="array" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByList" resultMap="_base_result_Map" parameterType="List">
+		<include refid="_base_sql_select"/>
+		<where>
+			<if test ="list != null and list.size &gt; 0">
+				PERMISSIONS_ID in <foreach collection="list" item="item" open="(" separator="," close=")">
+					<if test="item != null">#{item.permissionsId, jdbcType=DECIMAL }</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="selectByParameters" resultMap="_base_result_Map" parameterType="Map">
+		<include refid="_base_sql_select"/>
+		<where>
+		
+		</where>
+	</select>
+	
+	<delete id="delete" parameterType="PermissionsStrategy">
+		<include refid="_base_sql_delete"/> where PERMISSIONS_ID = #{permissionsId,jdbcType=DECIMAL} and STRATEGY_ID = #{strategyId,jdbcType=VARCHAR}
+	</delete>
+	<delete id="deleteByKey">
+		<include refid="_base_sql_delete"/> where PERMISSIONS_ID = #{permissionsId,jdbcType=DECIMAL}
+	</delete>
+	
+	<insert id="insert" parameterType="PermissionsStrategy">
+		insert into SECURITY_PERMISSIONS_STRATEGY (<include refid="_base_column_list" />)
+		values (
+			#{permissionsId,jdbcType=DECIMAL}, 
+			#{strategyId,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="PermissionsStrategy"></insert>
+</mapper>

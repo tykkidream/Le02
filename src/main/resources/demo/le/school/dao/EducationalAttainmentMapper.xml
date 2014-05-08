@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.school.dao.EducationalAttainmentMapper">
+	<resultMap id="BaseResultMap" type="EducationalAttainment">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="CODE" property="code" jdbcType="CHAR" />
+		<result column="STUDENT_ID" property="studentId" jdbcType="DECIMAL" />
+		<result column="SCHOOL_ID" property="schoolId" jdbcType="DECIMAL" />
+		<result column="CLASSES_ID" property="classesId" jdbcType="DECIMAL" />
+		<result column="BEGIN_DATE" property="beginDate" jdbcType="TIMESTAMP" />
+		<result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID,
+		CODE,
+		STUDENT_ID,
+		SCHOOL_ID,
+		CLASSES_ID,
+		BEGIN_DATE,
+		END_DATE
+	</sql>
+	
+	<select id="select" resultMap="BaseResultMap" parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from SCHOOL_EDUCATIONAL_ATTAINMENT
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<delete id="delete" parameterType="long">
+		delete from SCHOOL_EDUCATIONAL_ATTAINMENT
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="EducationalAttainment">
+		insert into SCHOOL_EDUCATIONAL_ATTAINMENT (
+			<include refid="Base_Column_List" />
+		) values (
+			#{id,jdbcType=DECIMAL},
+			#{code,jdbcType=CHAR},
+			#{studentId,jdbcType=DECIMAL},
+			#{schoolId,jdbcType=DECIMAL},
+			#{classesId,jdbcType=DECIMAL},
+			#{beginDate,jdbcType=TIMESTAMP},
+			#{endDate,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="EducationalAttainment">
+		<selectKey keyProperty="id" order="BEFORE" resultType="long">
+			select SEQ_EDUCATIONAL_ATTAINMENT_ID.nextval from dual
+		</selectKey>
+		insert into SCHOOL_EDUCATIONAL_ATTAINMENT
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="code != null">
+				CODE,
+			</if>
+			<if test="studentId != null">
+				STUDENT_ID,
+			</if>
+			<if test="schoolId != null">
+				SCHOOL_ID,
+			</if>
+			<if test="classesId != null">
+				CLASSES_ID,
+			</if>
+			<if test="beginDate != null">
+				BEGIN_DATE,
+			</if>
+			<if test="endDate != null">
+				END_DATE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=CHAR},
+			</if>
+			<if test="studentId != null">
+				#{studentId,jdbcType=DECIMAL},
+			</if>
+			<if test="schoolId != null">
+				#{schoolId,jdbcType=DECIMAL},
+			</if>
+			<if test="classesId != null">
+				#{classesId,jdbcType=DECIMAL},
+			</if>
+			<if test="beginDate != null">
+				#{beginDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endDate != null">
+				#{endDate,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateSelective" parameterType="EducationalAttainment">
+		update SCHOOL_EDUCATIONAL_ATTAINMENT
+		<set>
+			<if test="code != null">
+				CODE = #{code,jdbcType=CHAR},
+			</if>
+			<if test="studentId != null">
+				STUDENT_ID = #{studentId,jdbcType=DECIMAL},
+			</if>
+			<if test="schoolId != null">
+				SCHOOL_ID = #{schoolId,jdbcType=DECIMAL},
+			</if>
+			<if test="classesId != null">
+				CLASSES_ID = #{classesId,jdbcType=DECIMAL},
+			</if>
+			<if test="beginDate != null">
+				BEGIN_DATE = #{beginDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endDate != null">
+				END_DATE = #{endDate,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="update" parameterType="EducationalAttainment">
+		update SCHOOL_EDUCATIONAL_ATTAINMENT
+		set
+			CODE = #{code,jdbcType=CHAR},
+			STUDENT_ID = #{studentId,jdbcType=DECIMAL},
+			SCHOOL_ID = #{schoolId,jdbcType=DECIMAL},
+			CLASSES_ID = #{classesId,jdbcType=DECIMAL},
+			BEGIN_DATE = #{beginDate,jdbcType=TIMESTAMP},
+			END_DATE = #{endDate,jdbcType=TIMESTAMP}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+</mapper>

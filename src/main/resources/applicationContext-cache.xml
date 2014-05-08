@@ -23,7 +23,7 @@
 	<!-- 为了使用EHCache，需要把Spring的cacheManager换成EHCache的cacheManager，另外还要指明EHCache的配置文件。 -->
 	<!-- cacheManager的工厂类，指定ehcache.xml的位置。 -->
 	<bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
-		p:configLocation="classpath:ehcache.xml" />
+		p:configLocation="classpath:ehcache.xml" p:shared="true" />
 
 	<!-- 声明EHCache的cacheManager -->
 	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cacheManager-ref="cacheManagerFactory" />

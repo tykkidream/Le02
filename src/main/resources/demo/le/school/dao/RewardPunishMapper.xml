@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.school.dao.RewardPunishMapper">
+	<resultMap id="BaseResultMap" type="RewardPunish">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="CODE" property="code" jdbcType="CHAR" />
+		<result column="CONTENT" property="content" jdbcType="VARCHAR" />
+		<result column="SCHOOL_ID" property="schoolId" jdbcType="DECIMAL" />
+		<result column="TYPE" property="type" jdbcType="DECIMAL" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID,
+		CODE,
+		CONTENT,
+		SCHOOL_ID,
+		TYPE
+	</sql>
+	
+	<select id="select" resultMap="BaseResultMap" parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from SCHOOL_REWARD_PUNISH
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<delete id="delete" parameterType="long">
+		delete from SCHOOL_REWARD_PUNISH
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="RewardPunish">
+		insert into SCHOOL_REWARD_PUNISH (
+			<include refid="Base_Column_List" />
+		) values (
+			#{id,jdbcType=DECIMAL},
+			#{code,jdbcType=CHAR},
+			#{content,jdbcType=VARCHAR},
+			#{schoolId,jdbcType=DECIMAL},
+			#{type,jdbcType=DECIMAL})
+	</insert>
+	<insert id="insertSelective" parameterType="RewardPunish">
+		<selectKey keyProperty="id" order="BEFORE" resultType="long">
+			select SEQ_REWARD_PUNISH_ID.nextval from dual
+		</selectKey>
+		insert into SCHOOL_REWARD_PUNISH
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="code != null">
+				CODE,
+			</if>
+			<if test="content != null">
+				CONTENT,
+			</if>
+			<if test="schoolId != null">
+				SCHOOL_ID,
+			</if>
+			<if test="type != null">
+				TYPE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=CHAR},
+			</if>
+			<if test="content != null">
+				#{content,jdbcType=VARCHAR},
+			</if>
+			<if test="schoolId != null">
+				#{schoolId,jdbcType=DECIMAL},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=DECIMAL},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateSelective" parameterType="RewardPunish">
+		update SCHOOL_REWARD_PUNISH
+		<set>
+			<if test="code != null">
+				CODE = #{code,jdbcType=CHAR},
+			</if>
+			<if test="content != null">
+				CONTENT = #{content,jdbcType=VARCHAR},
+			</if>
+			<if test="schoolId != null">
+				SCHOOL_ID = #{schoolId,jdbcType=DECIMAL},
+			</if>
+			<if test="type != null">
+				TYPE = #{type,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="update" parameterType="RewardPunish">
+		update SCHOOL_REWARD_PUNISH
+		set
+			CODE = #{code,jdbcType=CHAR},
+			CONTENT = #{content,jdbcType=VARCHAR},
+			SCHOOL_ID = #{schoolId,jdbcType=DECIMAL},
+			TYPE = #{type,jdbcType=DECIMAL}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+</mapper>

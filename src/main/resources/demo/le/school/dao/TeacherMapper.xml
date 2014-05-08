@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.le.school.dao.TeacherMapper">
+	<resultMap id="BaseResultMap" type="Teacher">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="CODE" property="code" jdbcType="CHAR" />
+		<result column="INTO_SCHOOL_DATE" property="intoSchoolDate" jdbcType="TIMESTAMP" />
+		<result column="SCHOOL_ID" property="schoolId" jdbcType="DECIMAL" />
+		<result column="MAJOR_ID" property="majorId" jdbcType="DECIMAL" />
+		<result column="POST_ID" property="postId" jdbcType="DECIMAL" />
+		<result column="STATUS" property="status" jdbcType="DECIMAL" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID,
+		CODE,
+		INTO_SCHOOL_DATE,
+		SCHOOL_ID,
+		MAJOR_ID,
+		POST_ID,
+		STATUS
+	</sql>
+	
+	<select id="select" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from SCHOOL_TEACHER
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from SCHOOL_TEACHER
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="Teacher">
+		insert into SCHOOL_TEACHER (
+			<include refid="Base_Column_List" />
+		) values (
+			#{id,jdbcType=DECIMAL},
+			#{code,jdbcType=CHAR},
+			#{intoSchoolDate,jdbcType=TIMESTAMP},
+			#{schoolId,jdbcType=DECIMAL},
+			#{majorId,jdbcType=DECIMAL},
+			#{postId,jdbcType=DECIMAL},
+			#{status,jdbcType=DECIMAL})
+	</insert>
+	<insert id="insertSelective" parameterType="Teacher">
+		<selectKey keyProperty="id" order="BEFORE" resultType="long">
+			select SEQ_TEACHER_ID.nextval from dual
+		</selectKey>
+		insert into SCHOOL_TEACHER
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="code != null">
+				CODE,
+			</if>
+			<if test="intoSchoolDate != null">
+				INTO_SCHOOL_DATE,
+			</if>
+			<if test="schoolId != null">
+				SCHOOL_ID,
+			</if>
+			<if test="majorId != null">
+				MAJOR_ID,
+			</if>
+			<if test="postId != null">
+				POST_ID,
+			</if>
+			<if test="status != null">
+				STATUS
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=CHAR},
+			</if>
+			<if test="intoSchoolDate != null">
+				#{intoSchoolDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="schoolId != null">
+				#{schoolId,jdbcType=DECIMAL},
+			</if>
+			<if test="majorId != null">
+				#{majorId,jdbcType=DECIMAL},
+			</if>
+			<if test="postId != null">
+				#{postId,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=DECIMAL}
+			</if>
+		</trim>
+	</insert>
+	<update id="updateSelective" parameterType="Teacher">
+		update SCHOOL_TEACHER
+		<set>
+			<if test="code != null">
+				CODE = #{code,jdbcType=CHAR},
+			</if>
+			<if test="intoSchoolDate != null">
+				INTO_SCHOOL_DATE = #{intoSchoolDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="schoolId != null">
+				SCHOOL_ID = #{schoolId,jdbcType=DECIMAL},
+			</if>
+			<if test="majorId != null">
+				MAJOR_ID = #{majorId,jdbcType=DECIMAL},
+			</if>
+			<if test="postId != null">
+				POST_ID = #{postId,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=DECIMAL}
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="update" parameterType="Teacher">
+		update SCHOOL_TEACHER
+		set
+			CODE = #{code,jdbcType=CHAR},
+			INTO_SCHOOL_DATE = #{intoSchoolDate,jdbcType=TIMESTAMP},
+			SCHOOL_ID = #{schoolId,jdbcType=DECIMAL},
+			MAJOR_ID = #{majorId,jdbcType=DECIMAL},
+			POST_ID = #{postId,jdbcType=DECIMAL},
+			STATUS = #{status,jdbcType=DECIMAL}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+</mapper>

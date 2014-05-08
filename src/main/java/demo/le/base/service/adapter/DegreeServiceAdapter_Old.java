@@ -11,14 +11,14 @@ import org.apache.ibatis.session.RowBounds;
 
 import com.sun.org.apache.bcel.internal.util.Objects;
 
-import tykkidream.butterfly.SimpleEventHandler;
+//import tykkidream.butterfly.SimpleEventHandler;
 import tykkidream.keel.base.Page;
 import demo.le.base.model.Degree;
 import demo.le.base.service.DegreeService;
 
 public class DegreeServiceAdapter_Old implements DegreeService {
 	private DegreeService degreeService = null;
-	private Map<String, List<SimpleEventHandler>> map = null;
+	//private Map<String, List<SimpleEventHandler>> map = null;
 	
 	public static final String queryByPageMapRowBoundsBefore = "queryByPageMapRowBoundsBefore";
 	public static final String queryByPageMapRowBoundsAfter = "queryByPageMapRowBoundsAfter";
@@ -37,9 +37,9 @@ public class DegreeServiceAdapter_Old implements DegreeService {
 		}
 		
 		
-		map = new HashMap<String, List<SimpleEventHandler>>();
+		//map = new HashMap<String, List<SimpleEventHandler>>();
 	}
-	
+	/*
 	private boolean  interceptBefore(String intercept, Object[] args) {
 		List<SimpleEventHandler> list = map.get(intercept);
 		if (null != list) {
@@ -50,7 +50,7 @@ public class DegreeServiceAdapter_Old implements DegreeService {
 			}
 		}
 		return true;
-	}
+	}*/
 	
 	private Exception  interceptAfter(String intercept, Object[] args,Object result) {
 		
@@ -67,7 +67,7 @@ public class DegreeServiceAdapter_Old implements DegreeService {
 		List<Degree> result = null;
 		
 		try {
-			interceptBefore(queryByPageMapRowBoundsBefore, args);
+			//interceptBefore(queryByPageMapRowBoundsBefore, args);
 		} catch (Exception e) {
 			throw e;
 		}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="classesMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="demo.le.school.dao.ClassesMapper" />
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
+	</bean>
+	
+	<bean id="educationalAttainmentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="demo.le.school.dao.EducationalAttainmentMapper" />
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
+	</bean>
+	
+	<bean id="gradeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="demo.le.school.dao.GradeMapper" />
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
+	</bean>
+	
+	<bean id="rewardPunishMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="demo.le.school.dao.RewardPunishMapper" />
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
+	</bean>
+	
+	<bean id="schoolMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="demo.le.school.dao.SchoolMapper" />
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
+	</bean>
+	
+	<bean id="studentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="demo.le.school.dao.StudentMapper" />
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
+	</bean>
+	
+	<bean id="teacherMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="demo.le.school.dao.TeacherMapper" />
+		<property name="sqlSessionTemplate" ref="simpleSessionTemplate" />
+	</bean>
+</beans>
