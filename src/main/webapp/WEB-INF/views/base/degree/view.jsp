@@ -7,7 +7,7 @@
 <div>
 	<h3><a href="/Le02">首页</a>&nbsp;&nbsp;<a href="/Le02/base/degree/">学位管理</a>&nbsp;&nbsp;${data.name }</h3>
 	<h4>${data.name }的详细信息</h4>
-	<table border="1" width="100%">
+	<table border="1">
 		<tr>
 			<td>ID</td>
 			<td>${data.id }</td>

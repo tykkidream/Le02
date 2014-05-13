@@ -26,28 +26,23 @@ public class BpmDefinitionTest extends BaseTestCase {
 		InputStream is = readXmlFile();
 		Assert.assertNotNull(is);
 		// 发布流程
-		Deployment deployment = repositoryService.createDeployment()
-				.addInputStream("bpmn20.xml", is).name("holidayRequest")
-				.deploy();
+		Deployment deployment = repositoryService.createDeployment().addInputStream("bpmn20.xml", is)
+				.name("holidayRequest").deploy();
 		Assert.assertNotNull(deployment);
 		System.out.println("deployId:" + deployment.getId());
 		// 查询流程定义
-		ProcessDefinition processDefinition = repositoryService
-				.createProcessDefinitionQuery()
+		ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
 				.deploymentId(deployment.getId()).singleResult();
 
 		Long businessKey = new Double(1000000 * Math.random()).longValue();
 		// 启动流程
-		runtimeService.startProcessInstanceById(processDefinition.getId(),
-				businessKey.toString());
+		runtimeService.startProcessInstanceById(processDefinition.getId(), businessKey.toString());
 		// 查询任务实例
-		List<Task> taskList = taskService.createTaskQuery()
-				.processDefinitionId(processDefinition.getId()).list();
+		List<Task> taskList = taskService.createTaskQuery().processDefinitionId(processDefinition.getId()).list();
 		Assert.assertNotNull(taskList == null);
 		Assert.assertTrue(taskList.size() > 0);
 		for (Task task : taskList) {
-			System.out.println("task name is " + task.getName()
-					+ " ,task key is " + task.getTaskDefinitionKey());
+			System.out.println("task name is " + task.getName() + " ,task key is " + task.getTaskDefinitionKey());
 		}
 	}
 
